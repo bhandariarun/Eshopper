@@ -198,24 +198,24 @@
 						$result=$conn->query("SELECT * FROM Products");
 						while($row = $result->fetch_assoc()) {
 
-							<div class="col-sm-4">
-								<div class="product-image-wrapper">
-									<div class="single-products">
-										<div class="productinfo text-center">
-											<img src="images/home/product2.jpg" alt="" />
-											<h2>$56</h2>
-											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-									</div>
-									<div class="choose">
-										<ul class="nav nav-pills nav-justified">
-											<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-											<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
+							echo '<div class="col-sm-4">';
+								echo '<div class="product-image-wrapper">';
+									echo '<div class="single-products">';
+										echo '<div class="productinfo text-center">';
+											echo '<img src="images/home/product2.jpg" alt="" />';
+											echo '<h2>$56</h2>';
+											echo '<p>Easy Polo Black Edition</p>';
+											echo '<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>';
+										echo '</div>';
+										echo '</div>';
+										echo '<div class="choose">';
+											echo '<ul class="nav nav-pills nav-justified">';
+												echo '<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>';
+												echo '<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>';
+												echo '</ul>';
+												echo '</div>';
+												echo '</div>';
+												echo '</div>';
 
 
 							echo "<tr><td>".$row["id"]."</td><td>".$row["firstname"]." ".$row["lastname"]."</td></tr>";
