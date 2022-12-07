@@ -207,12 +207,6 @@
 							echo "<a href='#' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>";
 							echo "</div>";
 							echo "</div>";
-							echo "<div class='choose'>";
-							echo "<ul class='nav nav-pills nav-justified'>";
-							echo "<li><a href='#'><i class='fa fa-plus-square'></i>Add to wishlist</a></li>";
-                            echo "<li><a href='#'><i class='fa fa-plus-square'></i>Add to compare</a></li>";
-                            echo "</ul>";
-                            echo "</div>";
                             echo "</div>";
                             echo "</div>";	
 						}
