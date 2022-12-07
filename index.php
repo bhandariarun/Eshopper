@@ -201,9 +201,9 @@
 							echo "<div class='product-image-wrapper'>";
 							echo "<div class='single-products'>";
 							echo "<div class='productinfo text-center'>";
-							echo "<img src='images/".$row["id"].".jpg' alt='' />";
-							echo "<h2>".$row["price"]."</h2>";
-							echo "<p>".$row["name"]."</p>";
+							echo "<a href='#'><img src='images/".$row["id"].".jpg' alt='' /></a>";
+							echo "<h2><a href='#'>".$row["price"]."</a></h2>";
+							echo "<p><a href='#'>".$row["name"]."</a></p>";
 							echo "<a href='#' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>";
 							echo "</div>";
 							echo "</div>";
