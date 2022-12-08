@@ -3,7 +3,26 @@
 session_start();
 if(isset($_SESSION["login"])) {
     header("Location: index.php");
-} 
+}
+elseif (isset($_POST["hid"])) {
+    $email=$_POST["email"];
+    $password=$_POST["password"];
+    $result=$conn->query("SELECT * FROM User WHERE email='".$email."' AND password='".$password."'");
+    if (mysqli_num_rows($result)==1) {
+        while($row = $result->fetch_assoc()) {
+            $_SESSION["first_name"]=$row["first_name"];
+            $_SESSION["login"]=$row["email"];
+            $_SESSION["last_name"]=$row["last_name"];
+            $_SESSION["phone"]=$row["phone"];
+            $_SESSION["address"]=$row["address"];
+        }
+        echo 'works';
+        header("Location: index.php");
+    }
+    else {
+        $message="User Name or Password Incorrect";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +91,7 @@ if(isset($_SESSION["login"])) {
                         <div class="logo pull-left">
                             <a href="index.html"><img src="images/home/logo.png" alt="" /></a>
                         </div>
-                        
+
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
@@ -134,9 +153,10 @@ if(isset($_SESSION["login"])) {
                     <div class="login-form">
                         <!--login form-->
                         <h2>Login to your account</h2>
-                        <form action="#">
-                            <input type="text" placeholder="Name" />
-                            <input type="email" placeholder="Email Address" />
+                        <form action="login.php" method="POST">
+                            <input type="email" placeholder="Email" name="email" />
+                            <input type="password" placeholder="Password" name="password" />
+                            <input type="hidden" value="log" name="hid">
                             <span>
                                 <input type="checkbox" class="checkbox">
                                 Keep me signed in
@@ -188,7 +208,7 @@ if(isset($_SESSION["login"])) {
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="col-sm-2">
                         <div class="single-widget">
                             <h2>Policies</h2>
@@ -206,7 +226,7 @@ if(isset($_SESSION["login"])) {
                             <form action="#" class="searchform">
                                 <input type="text" placeholder="Your email address" />
                                 <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-                                
+
                             </form>
                         </div>
                     </div>
