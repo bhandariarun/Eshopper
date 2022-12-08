@@ -22,6 +22,12 @@ elseif (isset($_POST["hid"])) {
     else {
         $message="User Name or Password Incorrect";
     }
+else {
+    $first_name=$_POST["first_name"];
+    $last_name=$_POST["last_name"];
+    $email=$_POST["email"];
+    $password=$_POST["password"];
+}
 }
 ?>
 <!DOCTYPE html>
