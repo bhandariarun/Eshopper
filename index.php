@@ -80,10 +80,15 @@ session_start();
                                 }
                                 else {
                                     echo '<li class="dropdown"><a href="#"><i class="fa fa-user"> '.$_SESSION['first_name'].' '.$_SESSION['last_name'].'</i></a>';
-                                    echo '<ul role="menu" class="sub-menu">';
-                                    echo '<li><a href="">Proifle</a></li>';
-                                    echo '</ul>';
                                     echo '</li>';
+                                    echo '<div class="dropdown">';
+                                    echo '<a href="#">Dropdown</a>';
+                                    echo '<div class="dropdown-content">';
+                                    echo '<a href="#">Link 1</a>';
+                                    echo '<a href="#">Link 2</a>';
+                                    echo '<a href="#">Link 3</a>';
+                                    echo '</div>';
+                                    echo '</div>';
 
                                 }
                                 ?>
