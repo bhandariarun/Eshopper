@@ -73,8 +73,6 @@ session_start();
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                
-                                <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <?php
                                 if (!isset($_SESSION["login"])) {
@@ -299,6 +297,14 @@ session_start();
 
                     </div>
                     <!--features_items-->
+                    <center>
+					<ul class="pagination">
+						<li class="active"><a href="">1</a></li>
+						<li><a href="">2</a></li>
+						<li><a href="">3</a></li>
+						<li><a href="">&raquo;</a></li>
+					</ul>
+					</center>
 
                     <div class="recommended_items">
                         <!--recommended_items-->

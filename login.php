@@ -32,7 +32,7 @@ elseif (isset($_POST["hid"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Login | E-Shopper</title>
+    <title>Login | Tech-Adda</Tech-Adda></title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -97,7 +97,6 @@ elseif (isset($_POST["hid"])) {
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
                                 <li><a href=""><i class="fa fa-user"></i> Account</a></li>
-                                <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <li><a href="login.html" class="active"><i class="fa fa-lock"></i> Login/sign up</a></li>
                             </ul>
