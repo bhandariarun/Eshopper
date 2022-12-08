@@ -79,7 +79,12 @@ session_start();
                                     echo '<li><a href="login.html"><i class="fa fa-lock"></i> Login/Sign up</a></li>';
                                 }
                                 else {
-                                    echo '<li><a href="#"><i class="fa fa-user"></i>'.$_SESSION['first_name'].' '.$_SESSION['last_name'].'</a></li>';
+                                    echo '<li class="dropdown"><a href="#"><i class="fa fa-angle-down">'.$_SESSION['first_name'].' '.$_SESSION['last_name'].'</i></a>';
+                                    echo '<ul role="menu" class="sub-menu">';
+                                    echo '<li><a href="">Proifle</a></li>';
+                                    echo '</ul>';
+                                    echo '</li>';
+
                                 }
                                 ?>
                             </ul>
