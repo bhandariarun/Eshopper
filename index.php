@@ -86,7 +86,6 @@ session_start();
                                     echo '<a href="#">Link 3</a>';
                                     echo '</div>';
                                     echo '</li>';
-
                                 }
                                 ?>
                             </ul>
