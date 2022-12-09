@@ -76,19 +76,16 @@ session_start();
                                 <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <?php
                                 if (!isset($_SESSION["login"])) {
-                                    echo '<li><a href="login.html"><i class="fa fa-lock"></i> Login/Sign up</a></li>';
+                                    echo '<li><a href="login.html"><i class="fa fa-user"></i> Login/Sign up</a></li>';
                                 }
                                 else {
-                                    echo '<li class="dropdown"><a href="#"><i class="fa fa-user"> '.$_SESSION['first_name'].' '.$_SESSION['last_name'].'</i></a>';
-                                    echo '</li>';
-                                    echo '<div class="dropdown">';
-                                    echo '<a href="#">Dropdown</a>';
-                                    echo '<div class="dropdown-content">';
+                                    echo '<li class="dropdown1"><a href="#"><i class="fa fa-user"> '.$_SESSION['first_name'].' '.$_SESSION['last_name'].'</i></a>';
+                                    echo '<div class="dropdown1-content">';
                                     echo '<a href="#">Link 1</a>';
                                     echo '<a href="#">Link 2</a>';
                                     echo '<a href="#">Link 3</a>';
                                     echo '</div>';
-                                    echo '</div>';
+                                    echo '</li>';
 
                                 }
                                 ?>

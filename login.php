@@ -22,13 +22,14 @@ elseif (isset($_POST["hid"])) {
     else {
         $message="User Name or Password Incorrect";
     }
-else {
+}
+elseif (isset($_POST["hid1"])) {
     $first_name=$_POST["first_name"];
     $last_name=$_POST["last_name"];
     $email=$_POST["email"];
     $password=$_POST["password"];
 }
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,7 +105,7 @@ else {
                             <ul class="nav navbar-nav">
                                 <li><a href=""><i class="fa fa-user"></i> Account</a></li>
                                 <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="login.html" class="active"><i class="fa fa-lock"></i> Login/sign up</a></li>
+                                <li><a href="login.html" class="active"><i class="fa fa-user"></i> Login/sign up</a></li>
                             </ul>
                         </div>
                     </div>
