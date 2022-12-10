@@ -149,10 +149,17 @@ elseif (isset($_POST["hid1"])) {
         <!--/header-bottom-->
     </header>
     <!--/header-->
-
-    <section id="form">
+    
+    
         <!--form-->
         <div class="container">
+        <?php
+            if (isset($message)) {
+            echo '<div class="alert alert-warning" role="alert">';
+            echo $message;
+            echo '</div>';
+            }
+        ?>
             <div class="row">
                 <div class="col-sm-4 col-sm-offset-1">
                     <div class="login-form">
@@ -168,6 +175,7 @@ elseif (isset($_POST["hid1"])) {
                             </span>
                             <button type="submit" class="btn btn-default">Login</button>
                         </form>
+                        
                     </div>
                     <!--/login form-->
                 </div>
@@ -192,9 +200,9 @@ elseif (isset($_POST["hid1"])) {
                 </div>
             </div>
         </div>
-    </section>
+    
     <!--/form-->
-
+    <br><br><br>
 
     <footer id="footer">
         <!--Footer-->
