@@ -81,9 +81,9 @@ session_start();
                                 else {
                                     echo '<li class="dropdown1"><a href="#"><i class="fa fa-user"> '.$_SESSION['first_name'].' '.$_SESSION['last_name'].'</i></a>';
                                     echo '<div class="dropdown1-content">';
-                                    echo '<a href="#">Link 1</a>';
-                                    echo '<a href="#">Link 2</a>';
-                                    echo '<a href="#">Link 3</a>';
+                                    echo '<a href="#">Account</a>';
+                                    echo '<a href="#">Change Password</a>';
+                                    echo '<a href="/logout.php">Logout</a>';
                                     echo '</div>';
                                     echo '</li>';
                                 }
