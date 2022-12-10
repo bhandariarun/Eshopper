@@ -16,7 +16,6 @@ elseif (isset($_POST["hid"])) {
             $_SESSION["phone"]=$row["phone"];
             $_SESSION["address"]=$row["address"];
         }
-        echo 'works';
         header("Location: index.php");
     }
     else {
@@ -96,7 +95,7 @@ elseif (isset($_POST["hid1"])) {
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+                            <a href="index.php"><img src="images/home/logo.png" alt="" /></a>
                         </div>
 
                     </div>
@@ -104,8 +103,8 @@ elseif (isset($_POST["hid1"])) {
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
                                 <li><a href=""><i class="fa fa-user"></i> Account</a></li>
-                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="login.html" class="active"><i class="fa fa-user"></i> Login/sign up</a></li>
+                                <li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li><a href="login.php" class="active"><i class="fa fa-user"></i> Login/sign up</a></li>
                             </ul>
                         </div>
                     </div>
@@ -129,13 +128,13 @@ elseif (isset($_POST["hid1"])) {
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="index.php">Home</a></li>
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
+                                        <li><a href="shop.php">Products</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact-us.html">Contact</a></li>
+                                <li><a href="contact-us.php">Contact</a></li>
                             </ul>
                         </div>
                     </div>

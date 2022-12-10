@@ -66,17 +66,17 @@ session_start();
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+                            <a href="index.php"><img src="images/home/logo.png" alt="" /></a>
                         </div>
 
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <?php
                                 if (!isset($_SESSION["login"])) {
-                                    echo '<li><a href="login.html"><i class="fa fa-user"></i> Login/Sign up</a></li>';
+                                    echo '<li><a href="login.php"><i class="fa fa-user"></i> Login/Sign up</a></li>';
                                 }
                                 else {
                                     echo '<li class="dropdown1"><a href="#"><i class="fa fa-user"> '.$_SESSION['first_name'].' '.$_SESSION['last_name'].'</i></a>';
@@ -114,10 +114,10 @@ session_start();
                                 <li><a href="index.html" class="active">Home</a></li>
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
+                                        <li><a href="shop.php">Products</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact-us.html">Contact</a></li>
+                                <li><a href="contact-us.php">Contact</a></li>
                             </ul>
                         </div>
                     </div>
