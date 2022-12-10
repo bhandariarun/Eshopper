@@ -2571,3 +2571,18 @@ textarea {
 .dropdown1:hover .dropbtn {
     background-color: #3e8e41;
 }
+
+
+/* media query for product height */
+
+@media (max-width:768px) {
+    .product-image-wrapper img {
+        height: 130px;
+    }
+}
+
+@media (max-width:2300px) {
+    .product-image-wrapper img {
+        height: 180px;
+    }
+}

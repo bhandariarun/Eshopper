@@ -143,7 +143,7 @@ session_start();
                         <?php
 						$result=$conn->query("SELECT * FROM Products");
 						while($row = $result->fetch_assoc()) {
-							echo "<div class='col-sm-3'>";
+							echo "<div class='col-xs-6 col-sm-3 col-md-3'>";
 							echo "<div class='product-image-wrapper'>";
 							echo "<div class='single-products'>";
 							echo "<div class='productinfo text-center'>";
