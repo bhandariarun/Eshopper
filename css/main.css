@@ -857,13 +857,15 @@ h2.title {
 }
 
 .product-image-wrapper {
-    border: 1px solid #F7F7F5;
+    border: 1px solid #F7F7F5; 
     overflow: hidden;
     margin-bottom: 30px;
+    
 }
 
 .single-products {
     position: relative;
+    
 }
 
 .new,
@@ -897,6 +899,7 @@ h2.title {
 
 .productinfo img {
     width: 100%;
+    
 }
 
 .productinfo {
@@ -917,7 +920,7 @@ h2.title {
 
 .single-products:hover .product-overlay {
     display: block;
-    height: 100%;
+    
 }
 
 
