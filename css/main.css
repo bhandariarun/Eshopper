@@ -857,15 +857,15 @@ h2.title {
 }
 
 .product-image-wrapper {
-    border: 1px solid #F7F7F5; 
+    border: 1px solid #F7F7F5;
     overflow: hidden;
     margin-bottom: 30px;
-    
+
 }
 
 .single-products {
     position: relative;
-    
+
 }
 
 .new,
@@ -899,7 +899,7 @@ h2.title {
 
 .productinfo img {
     width: 100%;
-    
+
 }
 
 .productinfo {
@@ -920,7 +920,7 @@ h2.title {
 
 .single-products:hover .product-overlay {
     display: block;
-    
+
 }
 
 
@@ -2543,7 +2543,7 @@ textarea {
 .dropdown1-content {
     display: none;
     position: absolute;
-    /* background-color: #F0F0E9; */
+    background-color: #FFFFFF;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
