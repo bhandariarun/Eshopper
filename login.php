@@ -10,6 +10,7 @@ elseif (isset($_POST["hid"])) {
     $result=$conn->query("SELECT * FROM User WHERE email='".$email."' AND password='".$password."'");
     if (mysqli_num_rows($result)==1) {
         while($row = $result->fetch_assoc()) {
+            $_SESSION["u_id"]=$row["id"];
             $_SESSION["first_name"]=$row["first_name"];
             $_SESSION["login"]=$row["email"];
             $_SESSION["last_name"]=$row["last_name"];

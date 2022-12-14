@@ -26,6 +26,9 @@ session_start();
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+
+
 </head>
 <!--/head-->
 
@@ -150,14 +153,14 @@ session_start();
 							echo "<a href='#'><img src='images/".$row["id"].".jpg' alt='' /></a>";
 							echo "<a href='#'><h2>".$row["price"]."</h2></a>";
 							echo "<a href='#'><p>".$row["name"]."</p></a>";
-							echo "<a href='#' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>";
+							echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
 							echo "</div>";
 							echo "</div>";
                             echo "</div>";
-                            echo "</div>";	
+                            echo "</div>";
 						}
 						?>
-
+                        
                         <!-- <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
@@ -407,14 +410,40 @@ session_start();
     </footer>
     <!--/Footer-->
 
-
+        <script>
+            function addto() 
+            {
+                var id=event.srcElement.id;
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", "/add.php?id="+id);
+                xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    $(function() {
+                    $.bootstrapGrowl("Item Added To Cart Successfully !", {
+                        ele: 'body', // which element to append to
+                        type: 'info', // (null, 'info', 'error', 'success')
+                        offset: {from: 'top', amount: 40}, // 'top', or 'bottom'
+                        align: 'right', // ('left', 'right', or 'center')
+                        width: 300, // (integer, or 'auto')
+                        delay: 2000,
+                        allow_dismiss: true,
+                        stackup_spacing: 10 // spacing between consecutively stacked growls.
+                    });
+                    });
+                    // console.log(xhr.responseText);
+                }};
+                xhr.send();
+            }
+        </script>
 
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.scrollUp.min.js"></script>
         <script src="js/price-range.js"></script>
         <script src="js/jquery.prettyPhoto.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/main.js"></script>    
+        <script src="js/jquery.bootstrap-growl.min.js"></script>
+
 </body>
 
 </html>
