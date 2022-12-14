@@ -146,79 +146,49 @@ session_start();
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/one.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/two.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/three.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
+					<?php
+					if (isset($_SESSION['login']))
+					{
+						$result=$conn->query("SELECT * FROM Cart WHERE u_id='".$_SESSION['u_id']."'");
+						if (mysqli_num_rows($result)>0) {
+							while($row = $result->fetch_assoc()) {
+								$result2=$conn->query("SELECT * FROM Products WHERE id=".$row['p_id']."");
+								while($row2=$result2->fetch_assoc()) {
+									echo '<tr>';
+									echo '<td class="cart_product">';
+									echo '<a href=""><img src="images/'.$row2['id'].'.jpg" style="height:100px; width:100px" alt=""></a>';
+									echo '</td>';
+									echo '<td class="cart_description">';
+									echo '<h4><a href="">'.$row2['name'].'</a></h4>';
+									echo '</td>';
+									echo '<td class="cart_price">';
+									echo '<p>'.$row2['price'].'</p>';
+									echo '</td>';
+									echo '<td class="cart_quantity">';
+									echo '<div class="cart_quantity_button">';
+									echo '<a class="cart_quantity_up" href=""> - </a>';
+									echo '<input class="cart_quantity_input" type="text" name="quantity" value="'.$row['qty'].'" autocomplete="off" size="2">';
+									echo '<a class="cart_quantity_down" href=""> + </a>';
+									echo '</div>';
+									echo '</td>';
+									echo '<td class="cart_total">';
+									echo '<p class="cart_total_price">'.($row2['price']*$row['qty']).'</p>';
+									echo '</td>';
+									echo '<td class="cart_delete">';
+									echo '<a class="cart_quantity_delete" onclick=""><i class="fa fa-times"></i></a>';
+									echo '</td>';
+									echo '</tr>';
+								}
+							}
+							
+						}
+						else {
+							
+						}
+						
+					}
+					?>
+						
 					</tbody>
 				</table>
 			</div>
@@ -295,6 +265,31 @@ session_start();
 		
 	</footer><!--/Footer-->
 	
+	
+	<script>
+		function del() {
+			let xhr = new XMLHttpRequest();
+			var id=event.srcElement.id;
+                xhr.open("GET", "/del.php?id="+id);
+                xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    $(function() {
+                    $.bootstrapGrowl("Item Added To Cart Successfully !", {
+                        ele: 'body', // which element to append to
+                        type: 'info', // (null, 'info', 'error', 'success')
+                        offset: {from: 'top', amount: 40}, // 'top', or 'bottom'
+                        align: 'right', // ('left', 'right', or 'center')
+                        width: 300, // (integer, or 'auto')
+                        delay: 2000,
+                        allow_dismiss: true,
+                        stackup_spacing: 10 // spacing between consecutively stacked growls.
+                    });
+                    });
+                    // console.log(xhr.responseText);
+                }};
+                xhr.send();
+		}
+	</script>
 
 
     <script src="js/jquery.js"></script>
