@@ -154,7 +154,7 @@ session_start();
 							while($row = $result->fetch_assoc()) {
 								$result2=$conn->query("SELECT * FROM Products WHERE id=".$row['p_id']."");
 								while($row2=$result2->fetch_assoc()) {
-									echo '<tr>';
+									echo '<tr id="'.$row['p_id'].'a'.'">';
 									echo '<td class="cart_product">';
 									echo '<a href=""><img src="images/'.$row2['id'].'.jpg" style="height:100px; width:100px" alt=""></a>';
 									echo '</td>';
@@ -175,7 +175,7 @@ session_start();
 									echo '<p class="cart_total_price">'.($row2['price']*$row['qty']).'</p>';
 									echo '</td>';
 									echo '<td class="cart_delete">';
-									echo '<a class="cart_quantity_delete" onclick=""><i class="fa fa-times"></i></a>';
+									echo '<a class="cart_quantity_delete" id="'.$row['p_id'].'" onclick="del1()"><i class="fa fa-times" id="'.$row['p_id'].'"></i></a>';
 									echo '</td>';
 									echo '</tr>';
 								}
@@ -267,27 +267,17 @@ session_start();
 	
 	
 	<script>
-		function del() {
+		function del1() {
+            var id=event.srcElement.id;
 			let xhr = new XMLHttpRequest();
-			var id=event.srcElement.id;
-                xhr.open("GET", "/del.php?id="+id);
-                xhr.onreadystatechange = function () {
+            console.log(id);
+            xhr.open("GET", "/del.php?id="+id);
+            xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
-                    $(function() {
-                    $.bootstrapGrowl("Item Added To Cart Successfully !", {
-                        ele: 'body', // which element to append to
-                        type: 'info', // (null, 'info', 'error', 'success')
-                        offset: {from: 'top', amount: 40}, // 'top', or 'bottom'
-                        align: 'right', // ('left', 'right', or 'center')
-                        width: 300, // (integer, or 'auto')
-                        delay: 2000,
-                        allow_dismiss: true,
-                        stackup_spacing: 10 // spacing between consecutively stacked growls.
-                    });
-                    });
-                    // console.log(xhr.responseText);
-                }};
-                xhr.send();
+                    document.getElementById(id+'a').remove();
+                }
+            };
+            xhr.send();
 		}
 	</script>
 
