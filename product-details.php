@@ -1,3 +1,13 @@
+<?php
+include "sqlconnect.php";
+session_start();
+if (!(isset($_GET['id']))) {
+	header("Location: index.php");
+}
+else {
+	$id=$_GET['id'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,23 +150,35 @@
 						</div>
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
-								<img src="images/product-details/new.jpg" class="newarrival" alt="" />
-								<h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-								<p>Web ID: 1089772</p>
-								<img src="images/product-details/rating.png" alt="" />
-								<span>
-									<span>US $59</span>
-									<label>Quantity:</label>
-									<input type="text" value="3" />
-									<button type="button" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
-										Add to cart
-									</button>
-								</span>
-								<p><b>Availability:</b> In Stock</p>
-								<p><b>Condition:</b> New</p>
-								<p><b>Brand:</b> E-SHOPPER</p>
-								<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+							<?php
+							$result=$conn->query("SELECT * FROM Products WHERE id=".$id."");
+							if (mysqli_num_rows($result)>0) {
+								while($row = $result->fetch_assoc()) {
+									echo '<h1>'.$row['name'].'</h1>';
+									echo '<span>';
+									echo '<span>Rs.'.$row['price'].'</span>';
+									echo '<label>Quantity:</label>';
+									echo '<input type="text" value="1" />';
+									echo '<button type="button" class="btn btn-fefault cart">';
+									echo '<i class="fa fa-shopping-cart"></i>';
+									echo 'Add to cart';
+									echo '</button>';
+									echo '</span>';
+									echo '<p><b>Availability:</b> In Stock</p>';
+									$result1=$conn->query("SELECT * FROM Product_Detail WHERE p_id=".$id."");
+									if (mysqli_num_rows($result1)>0) {
+										echo '<br><br>';
+										echo '<h2>Details:</h2>';
+										while($row1 = $result1->fetch_assoc()) {
+											echo '<p><b>'.$row1['type'].':</b> '.$row1['detail'].'</p>';
+										}
+									}
+								}
+							}
+							else {
+								header("Location: index.php");
+							}
+							?>
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->

@@ -156,11 +156,11 @@ session_start();
 								$result2=$conn->query("SELECT * FROM Products WHERE id=".$row['p_id']."");
 								while($row2=$result2->fetch_assoc()) {
 									echo '<tr id="'.$row['p_id'].'a'.'">';
-									echo '<td class="cart_product">';
+									echo '<td class="">';
 									echo '<a href=""><img src="images/'.$row2['id'].'.jpg" style="height:100px; width:100px" alt=""></a>';
 									echo '</td>';
-									echo '<td class="cart_description">';
-									echo '<h4><a href="">'.$row2['name'].'</a></h4>';
+									echo '<td class="">';
+									echo '<h4 style="margin:0 0 10px"><a href="" style="color:#FE980F">'.$row2['name'].'</a></h4>';
 									echo '</td>';
 									echo '<td class="cart_price">';
 									echo '<p>'.$row2['price'].'</p>';
