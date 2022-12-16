@@ -69,7 +69,7 @@ session_start();
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.php"><img src="images/home/cn.png" style="height:100px; width:100px" alt="" /></a>
+                            <a href="index.php"><img src="images/home/cn.png" style="height:50px" alt="" /> &nbsp;&nbsp;<span style="color: #FE980F;font-family: 'Roboto', sans-serif;font-size: 28px;font-weight: 600;">Circuit Nepal</span></a>
                         </div>
 
                     </div>

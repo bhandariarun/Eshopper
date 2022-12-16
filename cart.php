@@ -28,7 +28,7 @@ session_start();
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 
-<body>
+<body onload="totall()">
 <header id="header">
         <!--header-->
         <div class="header_top">
@@ -134,7 +134,8 @@ session_start();
 	<section id="cart_items">
 		<div class="container">
 			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
+                <center><p id="noitem" hidden>No Items in your Cart</p></center>
+				<table class="table table-condensed" id="ctable">
 					<thead>
 						<tr class="cart_menu">
 							<td class="image">Item</td>
@@ -200,11 +201,11 @@ session_start();
 			
 			<div class="row">
 				<div class="col-sm-6">
-					<div class="total_area">
+					<div class="total_area" id="hide">
 						<ul>
-							<li>Cart Sub Total <span>$59</span></li>
-							<li>Shipping Cost <span>Free</span></li>
-							<li>Total <span>$61</span></li>
+							<li>Cart Sub Total Rs<span id="totamt"></span></li>
+							<li>Shipping Cost Rs<span id="shipping">150</span></li>
+							<li>Total Rs<span id="gtotal"></span></li>
 						</ul>
 							<a class="btn btn-default check_out" href="">Check Out</a>
 					</div>
@@ -275,10 +276,29 @@ session_start();
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
                     document.getElementById(id+'a').remove();
+                    totall();
                 }
             };
             xhr.send();
 		}
+        function totall() {
+            var tot = document.getElementsByClassName("cart_total_price");
+            var ttotal=0;
+            for (i=0;i<tot.length;i++) {
+                console.log(tot[i].innerHTML);
+                ttotal=ttotal+parseInt(tot[i].innerHTML);
+            }
+            console.log("Works");
+            if (ttotal==0) {
+                document.getElementById("hide").hidden=true;
+                document.getElementById("ctable").hidden=true;
+                document.getElementById("noitem").hidden=false;
+            }
+            else {
+                document.getElementById("totamt").innerHTML=ttotal;
+                document.getElementById("gtotal").innerHTML=ttotal+150;
+            }
+        }
 	</script>
 
 
