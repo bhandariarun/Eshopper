@@ -235,7 +235,6 @@ session_start();
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="">Terms of Use</a></li>
 								<li><a href="">Privecy Policy</a></li>
-								<li><a href="">Refund Policy</a></li>
 								<li><a href="">Copyright</a></li>
 							</ul>
 						</div>
