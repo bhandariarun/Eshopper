@@ -2586,3 +2586,12 @@ textarea {
         height: 180px;
     }
 }
+
+/* zoom css very important */
+.easyzoom {
+    float: left;
+}
+
+.easyzoom img {
+    display: block;
+}

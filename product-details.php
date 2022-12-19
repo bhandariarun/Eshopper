@@ -7,6 +7,12 @@ if (!(isset($_GET['id']))) {
 else {
 	$id=$_GET['id'];
 }
+$resultf=$conn->query("SELECT * FROM Products WHERE id=".$id."");
+if (mysqli_num_rows($resultf)>0) {
+	while($row = $resultf->fetch_assoc()) {
+		$img=intval($row['images']);
+	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +38,13 @@ else {
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+
+	<!-- image zoom js library -->
+	<link rel="stylesheet" href="css/zoom.css">
+	
+
+
 </head><!--/head-->
 
 <body>
@@ -126,17 +139,31 @@ else {
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img src="images/product-details/1.jpg" alt="" />
-								<h3>ZOOM</h3>
+								<div class="zoom">
+										<img src="images/<?php echo $id; ?>.jpg" alt="" />
+								</div>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								
 								  <!-- Wrapper for slides -->
 								    <div class="carousel-inner">
 										<div class="item active">
-										  <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
+										<?php if ($img==1) { ?>
+											<a href=""><img src="images/<?php echo $id; ?>.jpg" alt="" style="height:100px"></a>
+										<?php 
+										} 
+										if ($img==2) {
+										?>
+											<a href=""><img src="images/<?php echo $id; ?>.jpg" alt="images/<?php echo $id; ?>.png" style="height:100px"></a>
+											<a href=""><img src="images/<?php echo $id; ?>a.jpg" alt="images/<?php echo $id; ?>a.png" style="height:100px"></a>
+										<?php 
+										}
+										if ($img==3) {
+										?>
+											<a href=""><img src="images/<?php echo $id; ?>.jpg" alt="images/<?php echo $id; ?>.png" style="height:100px"></a>
+											<a href=""><img src="images/<?php echo $id; ?>a.jpg" alt="images/<?php echo $id; ?>a.png" style="height:100px"></a>
+											<a href=""><img src="images/<?php echo $id; ?>b.jpg" alt="images/<?php echo $id; ?>b.png" style="height:100px"></a>
+										<?php } ?>
 										</div>
 									</div>
 
@@ -502,7 +529,6 @@ else {
 		</div>
 		
 	</footer><!--/Footer-->
-	
 
   
     <script src="js/jquery.js"></script>
@@ -511,5 +537,11 @@ else {
 	<script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
+	<script src="js/jquery.zoom.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.zoom').zoom();
+		});
+	</script>
 </body>
 </html>

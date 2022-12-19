@@ -150,9 +150,9 @@ session_start();
 							echo "<div class='product-image-wrapper'>";
 							echo "<div class='single-products'>";
 							echo "<div class='productinfo text-center'>";
-							echo "<a href='#'><img src='images/".$row["id"].".jpg' alt='' /></a>";
-							echo "<a href='#'><h2>".$row["price"]."</h2></a>";
-							echo "<a href='#'><p>".$row["name"]."</p></a>";
+							echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg' alt='' /></a>";
+							echo "<a href='/product-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
+							echo "<a href='/product-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
 							echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
 							echo "</div>";
 							echo "</div>";
@@ -244,7 +244,7 @@ session_start();
 						<li class="active"><a href="">1</a></li>
 						<li><a href="">2</a></li>
 						<li><a href="">3</a></li>
-						<li><a href="">&raquo;</a></li>
+						<li><a href="">&raquo;</a></li> <!-- &laquo; for left pointing arrow -->
 					</ul>
 					</center>
 
