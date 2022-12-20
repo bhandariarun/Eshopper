@@ -540,7 +540,7 @@ if (mysqli_num_rows($resultf)>0) {
 	<script src="js/jquery.zoom.js"></script>
 	<script>
 		$(document).ready(function(){
-			$('.zoom').zoom();
+			$('.zoom').zoom({magnify:1.3,});
 		});
 	</script>
 </body>
