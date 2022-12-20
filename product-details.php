@@ -140,7 +140,7 @@ if (mysqli_num_rows($resultf)>0) {
 						<div class="col-sm-5">
 							<div class="view-product">
 								<div class="zoom">
-										<img src="images/<?php echo $id; ?>.jpg" alt="" />
+										<img id="changeim" src="images/<?php echo $id; ?>.jpg" alt="" />
 								</div>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -149,20 +149,20 @@ if (mysqli_num_rows($resultf)>0) {
 								    <div class="carousel-inner">
 										<div class="item active">
 										<?php if ($img==1) { ?>
-											<a href=""><img src="images/<?php echo $id; ?>.jpg" alt="" style="height:100px"></a>
+											<a onclick="imgchange('images/<?php echo $id; ?>.jpg')"><img src="images/<?php echo $id; ?>.jpg" alt="" style="height:100px;max-width:33%"></a>
 										<?php 
 										} 
 										if ($img==2) {
 										?>
-											<a href=""><img src="images/<?php echo $id; ?>.jpg" alt="images/<?php echo $id; ?>.png" style="height:100px"></a>
-											<a href=""><img src="images/<?php echo $id; ?>a.jpg" alt="images/<?php echo $id; ?>a.png" style="height:100px"></a>
+											<a onclick="imgchange('images/<?php echo $id; ?>.jpg')"><img src="images/<?php echo $id; ?>.jpg" alt="images/<?php echo $id; ?>.png" style="height:100px;max-width:33%"></a>
+											<a onclick="imgchange('images/<?php echo $id; ?>a.jpg')"><img src="images/<?php echo $id; ?>a.jpg" alt="images/<?php echo $id; ?>a.png" style="height:100px;max-width:33%"></a>
 										<?php 
 										}
 										if ($img==3) {
 										?>
-											<a href=""><img src="images/<?php echo $id; ?>.jpg" alt="images/<?php echo $id; ?>.png" style="height:100px"></a>
-											<a href=""><img src="images/<?php echo $id; ?>a.jpg" alt="images/<?php echo $id; ?>a.png" style="height:100px"></a>
-											<a href=""><img src="images/<?php echo $id; ?>b.jpg" alt="images/<?php echo $id; ?>b.png" style="height:100px"></a>
+											<a onclick="imgchange('images/<?php echo $id; ?>.jpg')"><img src="images/<?php echo $id; ?>.jpg" alt="images/<?php echo $id; ?>.png" style="height:100px;max-width:33%"></a>
+											<a onclick="imgchange('images/<?php echo $id; ?>a.jpg')"><img src="images/<?php echo $id; ?>a.jpg" alt="images/<?php echo $id; ?>a.png" style="height:100px;max-width:33%"></a>
+											<a onclick="imgchange('images/<?php echo $id; ?>b.jpg')"><img src="images/<?php echo $id; ?>b.jpg" alt="images/<?php echo $id; ?>b.png" style="height:100px;max-width:33%"></a>
 										<?php } ?>
 										</div>
 									</div>
@@ -186,7 +186,7 @@ if (mysqli_num_rows($resultf)>0) {
 									echo '<span>Rs.'.$row['price'].'</span>';
 									echo '<label>Quantity:</label>';
 									echo '<input type="text" value="1" />';
-									echo '<button type="button" class="btn btn-fefault cart">';
+									echo '<button type="button" class="btn btn-fefault cart" id="'.$row['id'].'" onclick="addto()">';
 									echo '<i class="fa fa-shopping-cart"></i>';
 									echo 'Add to cart';
 									echo '</button>';
@@ -195,7 +195,7 @@ if (mysqli_num_rows($resultf)>0) {
 									$result1=$conn->query("SELECT * FROM Product_Detail WHERE p_id=".$id."");
 									if (mysqli_num_rows($result1)>0) {
 										echo '<br><br>';
-										echo '<h2>Details:</h2>';
+										echo '<h2 style="text-align:left">Details:</h2>';
 										while($row1 = $result1->fetch_assoc()) {
 											echo '<p><b>'.$row1['type'].':</b> '.$row1['detail'].'</p>';
 										}
@@ -542,6 +542,16 @@ if (mysqli_num_rows($resultf)>0) {
 		$(document).ready(function(){
 			$('.zoom').zoom({magnify:1.3,});
 		});
+
+		function ff() {
+			$('.zoom').zoom({magnify:1.3,});
+		}
+
+		function imgchange(x) {
+			console.log(x);
+			document.getElementById('changeim').src = x;
+			ff();
+		}
 	</script>
 </body>
 </html>

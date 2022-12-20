@@ -857,7 +857,7 @@ h2.title {
 }
 
 .product-image-wrapper {
-    border: 1px solid #F7F7F5;
+    border: 2px solid #F7F7F5;
     overflow: hidden;
     margin-bottom: 30px;
 
@@ -1198,7 +1198,7 @@ h2.title {
 
 .view-product img {
     border: 1px solid #FE980F;
-    height: 380px;
+    /* height: 380px; */
     width: 100%;
 }
 

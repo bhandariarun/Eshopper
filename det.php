@@ -5,7 +5,7 @@ $desc=$_GET['desc'];
 $id=$_GET['id'];
 
 
-$result=$conn->query("SELECT * FROM Products WHERE id=".$id);
+$result=$conn->query("SELECT * FROM Products WHERE id=".$id." OR name='".$name."'");
 if (!(mysqli_num_rows($result)>0)) {
     $conn->query("INSERT INTO Products (id,name,description) VALUES ('".$id."','".$name."','".$desc."')");
 }
