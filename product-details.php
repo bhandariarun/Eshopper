@@ -184,14 +184,21 @@ if (mysqli_num_rows($resultf)>0) {
 									echo '<h1>'.$row['name'].'</h1>';
 									echo '<span>';
 									echo '<span>Rs.'.$row['price'].'</span>';
-									echo '<label>Quantity:</label>';
-									echo '<input type="text" value="1" />';
-									echo '<button type="button" class="btn btn-fefault cart" id="'.$row['id'].'" onclick="addto()">';
-									echo '<i class="fa fa-shopping-cart"></i>';
-									echo 'Add to cart';
-									echo '</button>';
+									if ($row['stock']=='Instock') {
+										echo '<label>Quantity:</label>';
+										echo '<input type="text" value="1" id="qty"/>';
+										echo '<button type="button" class="btn btn-fefault cart" id="'.$row['id'].'" onclick="addto()">';
+										echo '<i class="fa fa-shopping-cart"></i>';
+										echo 'Add to cart';
+										echo '</button>';
+									}
 									echo '</span>';
-									echo '<p><b>Availability:</b> In Stock</p>';
+									if ($row['stock']=='Instock') {
+										echo '<p><b>Availability:</b> In Stock</p>';
+									}
+									else {
+										echo '<p><b>Availability:</b> Out Of Stock</p>';
+									}
 									$result1=$conn->query("SELECT * FROM Product_Detail WHERE p_id=".$id."");
 									if (mysqli_num_rows($result1)>0) {
 										echo '<br><br>';
@@ -538,6 +545,7 @@ if (mysqli_num_rows($resultf)>0) {
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
 	<script src="js/jquery.zoom.js"></script>
+	<script src="js/jquery.bootstrap-growl.min.js"></script>
 	<script>
 		$(document).ready(function(){
 			$('.zoom').zoom({magnify:1.3,});
@@ -551,6 +559,31 @@ if (mysqli_num_rows($resultf)>0) {
 			console.log(x);
 			document.getElementById('changeim').src = x;
 			ff();
+		}
+
+		function addto() {
+			var id=event.srcElement.id;
+			var qty=document.getElementById('qty').value;
+			let xhr = new XMLHttpRequest();
+			xhr.open("GET", "/add.php?id="+id+"&qty="+qty);
+			xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4) {
+				$(function() {
+				$.bootstrapGrowl("Item Added To Cart Successfully !", {
+					ele: 'body', // which element to append to
+					type: 'info', // (null, 'info', 'error', 'success')
+					offset: {from: 'top', amount: 40}, // 'top', or 'bottom'
+					align: 'right', // ('left', 'right', or 'center')
+					width: 300, // (integer, or 'auto')
+					delay: 2000,
+					allow_dismiss: true,
+					stackup_spacing: 10 // spacing between consecutively stacked growls.
+				});
+				document.getElementById('qty').value=1;
+				});
+				// console.log(xhr.responseText);
+			}};
+			xhr.send();
 		}
 	</script>
 </body>

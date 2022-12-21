@@ -167,9 +167,10 @@ session_start();
 									echo '</td>';
 									echo '<td class="cart_quantity">';
 									echo '<div class="cart_quantity_button">';
-									echo '<a class="cart_quantity_up" href=""> - </a>';
-									echo '<input class="cart_quantity_input" type="text" name="quantity" value="'.$row['qty'].'" autocomplete="off" size="2">';
-									echo '<a class="cart_quantity_down" href=""> + </a>';
+                                    $c="'".$row['p_id']."'";
+									echo '<a class="cart_quantity_up" onclick="dec('.$c.')"> - </a>';
+									echo '<input id="'.$row['p_id'].'" class="cart_quantity_input" type="text" name="quantity" value="'.$row['qty'].'" autocomplete="off" size="2" onchange="addto()">';
+									echo '<a class="cart_quantity_down" onclick="inc('.$c.')"> + </a>';
 									echo '</div>';
 									echo '</td>';
 									echo '<td class="cart_total">';
@@ -264,7 +265,7 @@ session_start();
 		</div>
 		
 	</footer><!--/Footer-->
-	
+
 	
 	<script>
 		function del1() {
@@ -298,7 +299,27 @@ session_start();
                 document.getElementById("gtotal").innerHTML=ttotal+150;
             }
         }
+
+        function inc(id) {
+            // var id=event.srcElement.id;
+            var v=parseInt(document.getElementById(id).value)+1;
+            console.log(v);
+            
+        }
+
+        function dec(id) {
+            // var id=event.srcElement.id;
+            var v=parseInt(document.getElementById(id).value)-1;
+            console.log(v);
+
+        }
+
+        function addto() {
+            var id=event.srcElement.id;
+            console.log(id);
+		}
 	</script>
+
 
 
     <script src="js/jquery.js"></script>
@@ -306,5 +327,8 @@ session_start();
 	<script src="js/jquery.scrollUp.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
+
+
+   
 </body>
 </html>
