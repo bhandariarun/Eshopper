@@ -1929,7 +1929,7 @@ textarea {
 .form-two,
 .form-one {
     float: left;
-    width: 47%
+
 }
 
 
@@ -2596,4 +2596,10 @@ textarea {
 
 .easyzoom img {
     display: block;
+}
+
+@media (min-width:768px) {
+    .form-one {
+        width: 47%;
+    }
 }

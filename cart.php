@@ -110,7 +110,7 @@ session_start();
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html" class="active">Home</a></li>
+                                <li><a href="index.php" class="active">Home</a></li>
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.php">Products</a></li>
@@ -163,26 +163,45 @@ session_start();
 									echo '<h4 style="margin:0 0 10px"><a href="" style="color:#FE980F">'.$row2['name'].'</a></h4>';
 									echo '</td>';
 									echo '<td class="cart_price">';
-									echo '<p>'.$row2['price'].'</p>';
+									echo '<p id="'.$row['p_id'].'pp">'.$row2['price'].'</p>';
 									echo '</td>';
 									echo '<td class="cart_quantity">';
 									echo '<div class="cart_quantity_button">';
                                     $c="'".$row['p_id']."'";
 									echo '<a class="cart_quantity_up" onclick="dec('.$c.')"> - </a>';
-									echo '<input id="'.$row['p_id'].'" class="cart_quantity_input" type="text" name="quantity" value="'.$row['qty'].'" autocomplete="off" size="2" onchange="addto()">';
+									echo '<input id="'.$row['p_id'].'" class="cart_quantity_input" type="tel"'?>oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" <?php echo 'name="quantity" value="'.$row['qty'].'" autocomplete="off" size="2" onchange="addto('.$c.')">';
 									echo '<a class="cart_quantity_down" onclick="inc('.$c.')"> + </a>';
 									echo '</div>';
 									echo '</td>';
 									echo '<td class="cart_total">';
-									echo '<p class="cart_total_price">'.($row2['price']*$row['qty']).'</p>';
+									echo '<p id="'.$row['p_id'].'tt" class="cart_total_price">'.($row2['price']*$row['qty']).'</p>';
 									echo '</td>';
 									echo '<td class="cart_delete">';
-									echo '<a class="cart_quantity_delete" id="'.$row['p_id'].'" onclick="del1()"><i class="fa fa-times" id="'.$row['p_id'].'"></i></a>';
+									echo '<a class="cart_quantity_delete" onclick="del1('.$c.')"><i class="fa fa-times"></i></a>';
 									echo '</td>';
 									echo '</tr>';
 								}
 							}
-							
+							echo '<tr>';
+                            
+                            echo '<td colspan="2">';
+                            echo '  <table class="table table-condensed total-result">';
+                            echo '      <tbody><tr>';
+                            echo '          <td>Cart Sub Total</td>';
+                            echo '          <td id="totamt"></td>';
+                            echo '      </tr>';
+                            
+                            echo '      <tr class="shipping-cost">';
+                            echo '          <td>Shipping Cost</td>';
+                            echo '          <td id="shipping">150</td>';										
+                            echo '      </tr>';
+                            echo '      <tr>';
+                            echo '          <td>Total</td>';
+                            echo '          <td><span id="gtotal"><span></td>';
+                            echo '      </tr>';
+                            echo '  </tbody></table>';
+                            echo '</td>';
+                            echo '</tr>';
 						}
 						else {
 							
@@ -198,21 +217,24 @@ session_start();
 	</section> <!--/#cart_items-->
 
 	<section id="do_action">
-		<div class="container">
+		
+        <div class="container">
+            <h3>Shipping Details:</h3>
+            <div class="form-one">
+                <form method="POST" action="/checkout.php">
+                    <input type="text" placeholder="Email *" name="email" required>
+                    <input type="text" placeholder="Full Name *" name="fname" required>
+                    <input type="text" placeholder="Full Address *" name="add" required>
+                    <input type="tel" placeholder="Contact No" name="cno" required>
+                    <input class="btn btn-primary" type="submit" value="Checkout" style="font-size:20px">
+
+                </form>
+            </div>
+            
+        </div>
 			
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="total_area" id="hide">
-						<ul>
-							<li>Cart Sub Total Rs<span id="totamt"></span></li>
-							<li>Shipping Cost Rs<span id="shipping">150</span></li>
-							<li>Total Rs<span id="gtotal"></span></li>
-						</ul>
-							<a class="btn btn-default check_out" href="">Check Out</a>
-					</div>
-				</div>
-			</div>
-		</div>
+	
+			
 	</section><!--/#do_action-->
 
 	<footer id="footer"><!--Footer-->
@@ -235,7 +257,7 @@ session_start();
 							<h2>Policies</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="">Terms of Use</a></li>
-								<li><a href="">Privecy Policy</a></li>
+								<li><a href="">Privacy Policy</a></li>
 								<li><a href="">Copyright</a></li>
 							</ul>
 						</div>
@@ -258,7 +280,7 @@ session_start();
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2023 Tecg-Adda Inc. All rights reserved.</p>
+					<p class="pull-left">Copyright © 2023 Tech-Adda Inc. All rights reserved.</p>
 					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Tech-Adda</a></span></p>
 				</div>
 			</div>
@@ -268,8 +290,8 @@ session_start();
 
 	
 	<script>
-		function del1() {
-            var id=event.srcElement.id;
+		function del1(id) {
+            // var id=event.srcElement.id;
 			let xhr = new XMLHttpRequest();
             console.log(id);
             xhr.open("GET", "/del.php?id="+id);
@@ -303,20 +325,42 @@ session_start();
         function inc(id) {
             // var id=event.srcElement.id;
             var v=parseInt(document.getElementById(id).value)+1;
-            console.log(v);
-            
+            document.getElementById(id).value=v;
+            addto(id);
         }
 
         function dec(id) {
             // var id=event.srcElement.id;
             var v=parseInt(document.getElementById(id).value)-1;
-            console.log(v);
-
+            if (v==0) {
+                del1(id);
+            }
+            else {
+                document.getElementById(id).value=v;
+                addto(id);
+            }
         }
 
-        function addto() {
-            var id=event.srcElement.id;
+        function addto(id) {
+            // var id=event.srcElement.id;
             console.log(id);
+            var v=document.getElementById(id).value;
+            if (parseInt(v)<1) {
+                del1(id);
+            }
+            else {
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", "/add.php?id="+id+"&up=1&qty="+v);
+                xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    var pp=parseInt(document.getElementById(id+'pp').innerHTML);
+                    document.getElementById(id+'tt').innerHTML=(pp*parseInt(v));
+                    console.log(pp*parseInt(v));
+                    console.log(xhr.responseText);
+                    totall();
+                }};
+                xhr.send();
+            }
 		}
 	</script>
 
