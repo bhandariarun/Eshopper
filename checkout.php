@@ -1,6 +1,36 @@
 <?php 
+	include "sqlconnect.php";
+	session_start();
+	$tot=0;
 	if (!(isset($_POST['email']) || isset($_POST['fname']) || isset($_POST['add']) || isset($_POST['cno']))) {
 		header("Location: index.php");
+	}
+	else {
+		$_SESSION['temail']=$_POST['email'];
+		$_SESSION['tfname']=$_POST['fname'];
+		$_SESSION['tadd']=$_POST['add'];
+		$_SESSION['tcno']=$_POST['cno'];
+	}
+	if (isset($_SESSION['login'])) {
+		$result=$conn->query("SELECT * FROM Cart WHERE u_id='".$_SESSION['u_id']."'");
+		if (mysqli_num_rows($result)>0) {
+			while($row = $result->fetch_assoc()) {
+				$result2=$conn->query("SELECT * FROM Products WHERE id=".$row['p_id']."");
+				while($row2=$result2->fetch_assoc()) {
+					$tot=$tot+($row['qty']*$row2['price']);
+				}
+			}
+		}
+		else {
+			header("Location: index.php");
+		}
+	}
+	$bill_id=1;
+	$result=$conn->query("SELECT b_id FROM bill ORDER BY b_id DESC LIMIT 1;");
+	if (mysqli_num_rows($result)>0) {
+		while($row = $result->fetch_assoc()) {
+			$bill_id=$row['b_id']+1;
+		}
 	}
 ?>
 <!DOCTYPE html>
@@ -115,7 +145,20 @@
 
 	<section id="cart_items">
 		<div class="container">
-			
+			<!-- esewa form -->
+			<form action="https://uat.esewa.com.np/epay/main" method="POST">
+				<input value="<?php echo ($tot+150); ?>" name="tAmt" type="hidden">
+				<input value="<?php echo $tot; ?>" name="amt" type="hidden">
+				<input value="0" name="txAmt" type="hidden">
+				<input value="0" name="psc" type="hidden">
+				<input value="150" name="pdc" type="hidden">
+				<input value="EPAYTEST" name="scd" type="hidden">
+				<input value="<?php echo 'fuckyou'.$bill_id; ?>" name="pid" type="hidden">
+				<input value="http://192.168.1.148/esewa_payment_success.php?q=su" type="hidden" name="su">
+				<input value="http://192.168.1.148/esewa_payment_failed.php?q=fu" type="hidden" name="fu">
+				<input value="Esewa Submit" type="submit">
+			</form>
+			<!-- /esewa form -->
 		</div>
 	</section> <!--/#cart_items-->
 

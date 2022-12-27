@@ -222,10 +222,10 @@ session_start();
             <h3>Shipping Details:</h3>
             <div class="form-one">
                 <form method="POST" action="/checkout.php">
-                    <input type="text" placeholder="Email *" name="email" required>
-                    <input type="text" placeholder="Full Name *" name="fname" required>
-                    <input type="text" placeholder="Full Address *" name="add" required>
-                    <input type="tel" placeholder="Contact No" name="cno" required>
+                    <input type="text" placeholder="Email *" name="email" <?php if (isset($_SESSION['login'])) { echo "value='".$_SESSION['login']."'"; } ?> required>
+                    <input type="text" placeholder="Full Name *" name="fname" <?php if (isset($_SESSION['login'])) { echo "value='".$_SESSION['first_name']." ".$_SESSION['last_name']."'"; } ?> required>
+                    <input type="text" placeholder="Full Address *" name="add" <?php if (isset($_SESSION['login'])) { echo "value='".$_SESSION['address']."'"; } ?> required>
+                    <input type="tel" placeholder="Contact No" name="cno" <?php if (isset($_SESSION['login'])) { echo "value='".$_SESSION['phone']."'"; } ?> required>
                     <input class="btn btn-primary" type="submit" value="Checkout" style="font-size:20px">
 
                 </form>
@@ -234,7 +234,13 @@ session_start();
         </div>
 			
 	
-			
+	<?php 
+    if (isset($_GET['message'])) {
+        if ($_GET['message']=='Error') {
+            echo "<script>alert('Payment Error Please Try Again');</script>";
+        }
+    }
+    ?>		
 	</section><!--/#do_action-->
 
 	<footer id="footer"><!--Footer-->
