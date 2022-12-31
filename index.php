@@ -18,7 +18,7 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | Tech-adda</title>
+    <title>Home | Circuit Nepal</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -52,7 +52,7 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
                                 <li><a href="#"><i class="fa fa-phone"></i> +9779865609055</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> techadda58@gmail.com</a></li>
+                                <li><a href="https://mail.google.com/"><i class="fa fa-envelope"></i> techadda2023@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -410,7 +410,7 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <p class="pull-left">Copyright © 2022 Tech Adda Inc. All rights reserved.</p>
+                    <p class="pull-left">Copyright © 2023 Tech Adda Inc. All rights reserved.</p>
                     <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Tech-Adda</a></span></p>
                 </div>
             </div>

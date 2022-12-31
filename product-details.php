@@ -21,7 +21,7 @@ if (mysqli_num_rows($resultf)>0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Product Details | E-Shopper</title>
+    <title>Product Details | Circuit Nepal</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -56,7 +56,7 @@ if (mysqli_num_rows($resultf)>0) {
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
 								<li><a href=""><i class="fa fa-phone"></i> +9779865609055</a></li>
-								<li><a href=""><i class="fa fa-envelope"></i> techadda58@gmail.com</a></li>
+								<li><a href="https://mail.google.com/"><i class="fa fa-envelope"></i> techadda2023@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -78,12 +78,12 @@ if (mysqli_num_rows($resultf)>0) {
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-4">
-						<div class="logo pull-left">
-							<a href="index.php"><img src="images/home/logo.png" alt="" /></a>
-						</div>
-						
-					</div>
+				<div class="col-sm-4">
+                        <div class="logo pull-left">
+                            <a href="index.php"><img src="images/home/cn.png" style="height:50px" alt="" /> &nbsp;&nbsp;<span style="color: #FE980F;font-family: 'Roboto', sans-serif;font-size: 28px;font-weight: 600;">Circuit Nepal</span></a>
+                        </div>
+
+                    </div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
@@ -529,7 +529,7 @@ if (mysqli_num_rows($resultf)>0) {
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+					<p class="pull-left">Copyright © 2023 Tech-Adda Inc. All rights reserved.</p>
 					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Tech-Adda</a></span></p>
 				</div>
 			</div>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Contact | Tech-adda</title>
+    <title>Contact | Circuit Nepal</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
 								<li><a href=""><i class="fa fa-phone"></i> +9779865609055</a></li>
-								<li><a href=""><i class="fa fa-envelope"></i> techadda58@gmail.com</a></li>
+								<li><a href="https://mail.google.com/"><i class="fa fa-envelope"></i> techadda58@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -55,12 +55,12 @@
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-4">
-						<div class="logo pull-left">
-							<a href="index.php"><img src="images/home/logo.png" alt="" /></a>
-						</div>
-						
-					</div>
+				<div class="col-sm-4">
+                        <div class="logo pull-left">
+                            <a href="index.php"><img src="images/home/cn.png" style="height:50px" alt="" /> &nbsp;&nbsp;<span style="color: #FE980F;font-family: 'Roboto', sans-serif;font-size: 28px;font-weight: 600;">Circuit Nepal</span></a>
+                        </div>
+
+                    </div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
@@ -140,7 +140,7 @@
 	    					<p>Tech-Adda Inc.</p>
 							<p>Pokhara,Nepal</p>
 							<p>Mobile: +9779865609055</p>
-							<p>Email: techadda58@gmail.com</p>
+							<p>Email: techadda2023@gmail.com</p>
 	    				</address>
 	    				<div class="social-networks">
 	    					<h2 class="title text-center">Social Networking</h2>

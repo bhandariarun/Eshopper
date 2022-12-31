@@ -39,7 +39,7 @@ elseif (isset($_POST["hid1"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Login | Tech-Adda</Tech-Adda></title>
+    <title>Login | Circuit Nepal</Tech-Adda></title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -70,7 +70,7 @@ elseif (isset($_POST["hid1"])) {
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
                                 <li><a href=""><i class="fa fa-phone"></i> +9779865609055</a></li>
-                                <li><a href=""><i class="fa fa-envelope"></i> techadda58@gmail.com</a></li>
+                                <li><a href="https://mail.google.com/"><i class="fa fa-envelope"></i> techadda2023@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -96,7 +96,7 @@ elseif (isset($_POST["hid1"])) {
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.php"><img src="images/home/logo.png" alt="" /></a>
+                            <a href="index.php"><img src="images/home/cn.png" style="height:50px" alt="" /> &nbsp;&nbsp;<span style="color: #FE980F;font-family: 'Roboto', sans-serif;font-size: 28px;font-weight: 600;">Circuit Nepal</span></a>
                         </div>
 
                     </div>
@@ -252,7 +252,7 @@ elseif (isset($_POST["hid1"])) {
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <p class="pull-left">Copyright © 2013 Tech-Adda Inc. All rights reserved.</p>
+                    <p class="pull-left">Copyright © 2023 Tech-Adda Inc. All rights reserved.</p>
                     <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Tech-Adda</a></span></p>
                 </div>
             </div>
