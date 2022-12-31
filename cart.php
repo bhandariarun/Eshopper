@@ -1,6 +1,15 @@
 <?php
 include "sqlconnect.php";
 session_start();
+if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < 32; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    $_SESSION['t_id']=$randomString;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -208,6 +217,62 @@ session_start();
 						}
 						
 					}
+                    elseif (isset($_SESSION['t_id'])) {
+                        $result=$conn->query("SELECT * FROM Tcart WHERE t_id='".$_SESSION['t_id']."'");
+						if (mysqli_num_rows($result)>0) {
+							while($row = $result->fetch_assoc()) {
+								$result2=$conn->query("SELECT * FROM Products WHERE id=".$row['p_id']."");
+								while($row2=$result2->fetch_assoc()) {
+									echo '<tr id="'.$row['p_id'].'a'.'">';
+									echo '<td class="">';
+									echo '<a href=""><img src="images/'.$row2['id'].'.jpg" style="height:100px; width:100px" alt=""></a>';
+									echo '</td>';
+									echo '<td class="">';
+									echo '<h4 style="margin:0 0 10px"><a href="" style="color:#FE980F">'.$row2['name'].'</a></h4>';
+									echo '</td>';
+									echo '<td class="cart_price">';
+									echo '<p id="'.$row['p_id'].'pp">'.$row2['price'].'</p>';
+									echo '</td>';
+									echo '<td class="cart_quantity">';
+									echo '<div class="cart_quantity_button">';
+                                    $c="'".$row['p_id']."'";
+									echo '<a class="cart_quantity_up" onclick="dec('.$c.')"> - </a>';
+									echo '<input id="'.$row['p_id'].'" class="cart_quantity_input" type="tel"'?>oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" <?php echo 'name="quantity" value="'.$row['qty'].'" autocomplete="off" size="2" onchange="addto('.$c.')">';
+									echo '<a class="cart_quantity_down" onclick="inc('.$c.')"> + </a>';
+									echo '</div>';
+									echo '</td>';
+									echo '<td class="cart_total">';
+									echo '<p id="'.$row['p_id'].'tt" class="cart_total_price">'.($row2['price']*$row['qty']).'</p>';
+									echo '</td>';
+									echo '<td class="cart_delete">';
+									echo '<a class="cart_quantity_delete" onclick="del1('.$c.')"><i class="fa fa-times"></i></a>';
+									echo '</td>';
+									echo '</tr>';
+								}
+							}
+							echo '<tr>';
+                            
+                            echo '<td colspan="2">';
+                            echo '  <table class="table table-condensed total-result">';
+                            echo '      <tbody><tr>';
+                            echo '          <td>Cart Sub Total</td>';
+                            echo '          <td id="totamt"></td>';
+                            echo '      </tr>';
+                            
+                            echo '      <tr class="shipping-cost">';
+                            echo '          <td>Shipping Cost</td>';
+                            echo '          <td id="shipping">150</td>';										
+                            echo '      </tr>';
+                            echo '      <tr>';
+                            echo '          <td>Total</td>';
+                            echo '          <td><span id="gtotal"><span></td>';
+                            echo '      </tr>';
+                            echo '  </tbody></table>';
+                            echo '</td>';
+                            echo '</tr>';
+						}
+						
+                    }
 					?>
 						
 					</tbody>

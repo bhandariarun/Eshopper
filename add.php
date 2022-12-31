@@ -32,4 +32,22 @@ if ($_SESSION['login']) {
         echo "Success";
     }
 }
+elseif (isset($_SESSION['t_id'])) {
+    $result=$conn->query("SELECT * FROM Tcart WHERE t_id='".$_SESSION['t_id']."' AND p_id='".$id."'");
+    if (mysqli_num_rows($result)>0) {
+        while($row = $result->fetch_assoc()) {
+            if ($up==0) {
+                $conn->query("UPDATE Tcart SET qty=".strval($row['qty']+$qt)." WHERE t_id='".$_SESSION['t_id']."' AND p_id='".$id."'");
+            }
+            else {
+                $conn->query("UPDATE Tcart SET qty=".strval($qt)." WHERE t_id='".$_SESSION['t_id']."' AND p_id='".$id."'");
+            }
+        }
+        echo "Success";
+    }
+    else {
+        $conn->query("INSERT INTO Tcart (t_id,p_id,qty) VALUES ('".$_SESSION['t_id']."',".$id.",".strval($qt).")");
+        echo "Success";
+    }
+} 
 ?>

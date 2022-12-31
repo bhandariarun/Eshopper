@@ -1,5 +1,14 @@
 <?php include "sqlconnect.php"; 
 session_start();
+if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < 32; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    $_SESSION['t_id']=$randomString;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
