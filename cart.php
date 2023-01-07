@@ -124,7 +124,7 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="/?cat=Development Board">Development Boards</a></li>
                                         <li><a href="/?cat=Voltage Regulator">Voltage Regulators</a></li>
-                                        <li><a href="/?cat=Sensors and Modules">Sensors and Modules</a></li>
+                                        <li><a href="/?cat=Sensor">Sensors and Modules</a></li>
                                         <li><a href="/?cat=Motors and Accessories">Motors and Accessories</a></li>
                                         <li><a href="/?cat=Transistors and Mosfets"> Transistors and Mosfets</a></li>
                                         <li><a href="/?cat=Integrated Circuits">Integrated Circuits</a></li>
