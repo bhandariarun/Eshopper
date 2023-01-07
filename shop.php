@@ -90,9 +90,20 @@
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
                                 <li><a href="index.php">Home</a></li>
-                                <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                                <li class="dropdown"><a href="#">Category<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.php">Products</a></li>
+                                        <li><a href="/?cat=Development Board">Development Boards</a></li>
+                                        <li><a href="/?cat=Voltage Regulator">Voltage Regulators</a></li>
+                                        <li><a href="/?cat=Sensors and Modules">Sensors and Modules</a></li>
+                                        <li><a href="/?cat=Motors and Accessories">Motors and Accessories</a></li>
+                                        <li><a href="/?cat=Transistors and Mosfets"> Transistors and Mosfets</a></li>
+                                        <li><a href="/?cat=Integrated Circuits">Integrated Circuits</a></li>
+                                        <li><a href="/?cat=Radio Frequency Modules">Radio Frequency Modules</a></li>
+                                        <li><a href="/?cat=Batteries and Accessories">Batteries and Accessories</a></li>
+                                        <li><a href="/?cat=Resistors,Diodes and Capacitors">Resistors,Diodes and Capacitors</a></li>
+                                        <li><a href="/?cat=Batteries and Accessories">Batteries and Accessories</a></li>
+                                        <li><a href="/?cat=Switch">Switch</a></li>
+                                        <li><a href="/?cat=Display Modules">Display Modules</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="contact-us.php">Contact</a></li>
