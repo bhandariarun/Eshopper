@@ -51,7 +51,7 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
                     <div class="col-sm-6">
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-phone"></i> +9779865609055</a></li>
+                                <li><a href="#"><i class="fa fa-phone"></i> +9779865609055 / 9816641646</a></li>
                                 <li><a href="https://mail.google.com/"><i class="fa fa-envelope"></i> techadda2023@gmail.com</a></li>
                             </ul>
                         </div>

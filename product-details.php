@@ -55,7 +55,7 @@ if (mysqli_num_rows($resultf)>0) {
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href=""><i class="fa fa-phone"></i> +9779865609055</a></li>
+								<li><a href=""><i class="fa fa-phone"></i> +9779865609055 / 9816641646</a></li>
 								<li><a href="https://mail.google.com/"><i class="fa fa-envelope"></i> techadda2023@gmail.com</a></li>
 							</ul>
 						</div>
@@ -369,16 +369,6 @@ if (mysqli_num_rows($resultf)>0) {
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
-							
-							<div class="tab-pane fade active in" id="reviews" >
-								<div class="col-sm-12">
-									<ul>
-										<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-										<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-										<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
-									</ul>
 								</div>
 							</div>
 							
