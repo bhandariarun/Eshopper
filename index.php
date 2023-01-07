@@ -9,6 +9,17 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
     }
     $_SESSION['t_id']=$randomString;
 }
+if (isset($_GET['page'])) {
+    if (intval($_GET['page'])<=1) {
+        $page=0;
+    }
+    else {
+        $page=((intval($_GET['page'])-1)*12);
+    }
+}
+else {
+    $page=0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -135,7 +146,10 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
                     </div>
                     <div class="col-sm-3">
                         <div class="search_box pull-right">
-                            <input type="text" placeholder="Search" />
+                            <form action="/" method="get">
+                                <input name="search" type="text" placeholder="Search" />
+                                <button type="submit" class="btn" style="background: #FE980F;border: 0 none;border-radius: 0;background-image: url(../images/home/searchicon.png);background-repeat: no-repeat;background-position: center;height: 35px;width:35px;"></button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -151,23 +165,62 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
                 <div class="col-sm-12 padding-right">
                     <div class="features_items">
                         <!--features_items-->
-                        <h2 class="title text-center">Features Items</h2>
+                        
                         <?php
-						$result=$conn->query("SELECT * FROM Products");
-						while($row = $result->fetch_assoc()) {
-							echo "<div class='col-xs-6 col-sm-3 col-md-3'>";
-							echo "<div class='product-image-wrapper'>";
-							echo "<div class='single-products'>";
-							echo "<div class='productinfo text-center'>";
-							echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg' alt='' /></a>";
-							echo "<a href='/product-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
-							echo "<a href='/product-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
-							echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
-							echo "</div>";
-							echo "</div>";
-                            echo "</div>";
-                            echo "</div>";
-						}
+                        if (isset($_GET['cat'])) {
+                            echo '<h2 class="title text-center">'.$_GET['cat'].'</h2>';
+                            $result=$conn->query("SELECT * FROM Products WHERE category LIKE '%".$_GET['cat']."%' LIMIT ".$page.",12");
+                            while($row = $result->fetch_assoc()) {
+                                echo "<div class='col-xs-6 col-sm-3 col-md-3'>";
+                                echo "<div class='product-image-wrapper'>";
+                                echo "<div class='single-products'>";
+                                echo "<div class='productinfo text-center'>";
+                                echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg' alt='' /></a>";
+                                echo "<a href='/product-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
+                                echo "<a href='/product-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
+                                echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                            }
+                        }
+                        elseif ((!isset($_GET['search'])) || ($_GET['search']=='')) {
+                            echo '<h2 class="title text-center">Features Items</h2>';
+                            $result=$conn->query("SELECT * FROM Products LIMIT ".$page.",12");
+                            while($row = $result->fetch_assoc()) {
+                                echo "<div class='col-xs-6 col-sm-3 col-md-3'>";
+                                echo "<div class='product-image-wrapper'>";
+                                echo "<div class='single-products'>";
+                                echo "<div class='productinfo text-center'>";
+                                echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg' alt='' /></a>";
+                                echo "<a href='/product-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
+                                echo "<a href='/product-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
+                                echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                            }
+                        }
+                        else {
+                            echo '<h2 class="title text-center">'.$_GET['search'].'</h2>';
+                            $result=$conn->query("SELECT * FROM Products WHERE name LIKE '%".$_GET['search']."%' LIMIT ".$page.",12");
+                            while($row = $result->fetch_assoc()) {
+                                echo "<div class='col-xs-6 col-sm-3 col-md-3'>";
+                                echo "<div class='product-image-wrapper'>";
+                                echo "<div class='single-products'>";
+                                echo "<div class='productinfo text-center'>";
+                                echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg' alt='' /></a>";
+                                echo "<a href='/product-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
+                                echo "<a href='/product-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
+                                echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                            }
+                        }
 						?>
                         
                         <!-- <div class="col-sm-4">
@@ -249,11 +302,75 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
                     </div>
                     <!--features_items-->
                     <center>
+                    <?php 
+                        if (isset($_GET['page'])) {
+                            $pg=intval($_GET['page']);
+                        }
+                        else {
+                            $pg=1;
+                        }
+                        if (isset($_GET['search'])) {
+                            $st='search='.$_GET['search'].'&';
+                        }
+                        else {
+                            $st='';
+                        }
+                        if ($st=='') {
+                            $cnt = $conn->query("SELECT * FROM Products")->num_rows;
+                        }
+                        else {
+                            $cnt = $conn->query("SELECT * FROM Products WHERE name LIKE '%".$_GET['search']."%'")->num_rows;
+                        }
+                        if (intval($cnt/12)<($cnt/12)) {
+                            $cnt=intval($cnt/12)+1;
+                        }
+                        
+                    ?>
 					<ul class="pagination">
-						<li class="active"><a href="">1</a></li>
+                        <?php 
+                        if ($pg>1) {
+                            echo '<li><a href="/?'.$st.'page='.($pg-1).'">&laquo;</a></li>';
+                        }
+                        if ($pg==1) {
+                            echo '<li class="active"><a>1</a></li>';
+                            if ($cnt==2) {
+                                echo '<li class=""><a href="/?'.$st.'page=2">2</a></li>';
+                            }
+                            if ($cnt>2) {
+                                echo '<li class=""><a href="/?'.$st.'page=2">2</a></li>';
+                                echo '<li class=""><a href="/?'.$st.'page=3">3</a></li>';
+                            }
+                            if ($cnt>3) {
+                                echo '<li><a href="/?'.$st.'page=2">&raquo;</a></li>';
+                            }
+                        }
+                        elseif ($pg>1) {
+                            if ($pg==$cnt) {
+                                if ($pg>2) {
+                                echo '<li><a href="/?'.$st.'page='.($pg-2).'">'.($pg-2).'</a></li>';
+                                }
+                                if ($pg>1) {
+                                echo '<li><a href="/?'.$st.'page='.($pg-1).'">'.($pg-1).'</a></li>';
+                                }
+                                echo '<li class="active"><a href="">'.$pg.'</a></li>';
+                            }
+                            else {
+                                if ($pg>1) {
+                                    echo '<li><a href="/?'.$st.'page='.($pg-1).'">'.($pg-1).'</a></li>';
+                                }
+                                echo '<li class="active"><a href="">'.$pg.'</a></li>';
+                                if ($pg>1) {
+                                    echo '<li><a href="/?'.$st.'page='.($pg+1).'">'.($pg+1).'</a></li>';
+                                }
+                                echo '<li><a href="/?'.$st.'page='.($pg+1).'">&raquo;</a></li>';
+                            }
+                        }
+                        ?>
+
+						<!-- <li class="active"><a href="">1</a></li>
 						<li><a href="">2</a></li>
 						<li><a href="">3</a></li>
-						<li><a href="">&raquo;</a></li> <!-- &laquo; for left pointing arrow -->
+						<li><a href="">&raquo;</a></li> &laquo; for left pointing arrow -->
 					</ul>
 					</center>
 
