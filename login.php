@@ -6,7 +6,9 @@ if(isset($_SESSION["login"])) {
 }
 elseif (isset($_POST["hid"])) {
     $email=$_POST["email"];
+    $email = $conn->real_escape_string($email);
     $password=$_POST["password"];
+    $password = $conn->real_escape_string($password);
     $result=$conn->query("SELECT * FROM User WHERE email='".$email."' AND password='".$password."'");
     if (mysqli_num_rows($result)==1) {
         while($row = $result->fetch_assoc()) {
@@ -25,9 +27,13 @@ elseif (isset($_POST["hid"])) {
 }
 elseif (isset($_POST["hid1"])) {
     $first_name=$_POST["first_name"];
+    $first_name = $conn->real_escape_string($first_name);
     $last_name=$_POST["last_name"];
+    $last_name = $conn->real_escape_string($last_name);
     $email=$_POST["email"];
+    $email =$conn->real_escape_string($email);
     $password=$_POST["password"];
+    $password = $conn->real_escape_string($password);
 }
 
 ?>

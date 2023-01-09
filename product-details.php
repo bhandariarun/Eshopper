@@ -6,6 +6,7 @@ if (!(isset($_GET['id']))) {
 }
 else {
 	$id=$_GET['id'];
+	$id = $conn->real_escape_string($id);
 }
 $resultf=$conn->query("SELECT * FROM Products WHERE id=".$id."");
 if (mysqli_num_rows($resultf)>0) {

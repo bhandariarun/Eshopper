@@ -1,8 +1,11 @@
 <?php
 include "sqlconnect.php";
 $name=$_GET['name'];
+$name= $conn->real_escape_string($name);
 $desc=$_GET['desc'];
+$desc = $conn->real_escape_string($desc);
 $id=$_GET['id'];
+$id = $conn->real_escape_string($id);
 
 
 $result=$conn->query("SELECT * FROM Products WHERE id=".$id." OR name='".$name."'");

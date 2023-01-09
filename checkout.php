@@ -7,9 +7,13 @@
 	}
 	else {
 		$temail=$_POST['email'];
+		$temail = $conn->real_escape_string($temail);
 		$tfname=$_POST['fname'];
+		$tfname = $conn->real_escape_string($tfname);
 		$tadd=$_POST['add'];
+		$tadd = $conn->real_escape_string($tadd);
 		$tcno=$_POST['cno'];
+		$tcno = $conn->real_escape_string($tcno);
 	}
 	$p_ids='';
 	if (isset($_POST['esewa'])) {

@@ -2,8 +2,10 @@
 include "sqlconnect.php";
 session_start();
 $id=$_GET['id'];
+$id1 = $conn->real_escape_string($id);
 if (isset($_GET['qty'])) {
     $qt=intval($_GET['qty']);
+    $qt = $conn->real_escape_string($qt);
 }
 else {
     $qt=1;

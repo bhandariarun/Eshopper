@@ -316,15 +316,18 @@ else {
                     <?php 
                         if (isset($_GET['page'])) {
                             $pg=intval($_GET['page']);
+                            $pg = $conn->real_escape_string($pg);
                         }
                         else {
                             $pg=1;
                         }
                         if (isset($_GET['search'])) {
                             $st='search='.$_GET['search'].'&';
+                            $st = $conn->real_escape_string($st);
                         }
                         elseif (isset($_GET['cat'])) {
                             $st='cat='.$_GET['cat'].'&';
+                            $st = $conn->real_escape_string($st);
                         }
                         else {
                             $st='';
