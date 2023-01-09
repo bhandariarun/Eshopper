@@ -180,7 +180,8 @@ else {
                         <?php
                         if (isset($_GET['cat'])) {
                             echo '<h2 class="title text-center">'.$_GET['cat'].'</h2>';
-                            $result=$conn->query("SELECT * FROM Products WHERE category LIKE '%".$_GET['cat']."%' LIMIT ".$page.",12");
+                            $cat1 = $conn->real_escape_string($_GET['cat']);
+                            $result=$conn->query("SELECT * FROM Products WHERE category LIKE '%".$cat1."%' LIMIT ".$page.",12");
                             while($row = $result->fetch_assoc()) {
                                 echo "<div class='col-xs-6 col-sm-3 col-md-3'>";
                                 echo "<div class='product-image-wrapper'>";
@@ -216,7 +217,8 @@ else {
                         }
                         else {
                             echo '<h2 class="title text-center">'.$_GET['search'].'</h2>';
-                            $result=$conn->query("SELECT * FROM Products WHERE name LIKE '%".$_GET['search']."%' LIMIT ".$page.",12");
+                            $search1 = $conn->real_escape_string($_GET['search']);
+                            $result=$conn->query("SELECT * FROM Products WHERE name LIKE '%".$search1."%' LIMIT ".$page.",12");
                             while($row = $result->fetch_assoc()) {
                                 echo "<div class='col-xs-6 col-sm-3 col-md-3'>";
                                 echo "<div class='product-image-wrapper'>";
@@ -336,10 +338,12 @@ else {
                             $cnt = $conn->query("SELECT * FROM Products")->num_rows;
                         }
                         elseif (isset($_GET['cat'])) {
-                            $cnt = $conn->query("SELECT * FROM Products WHERE category LIKE '%".$_GET['cat']."%'")->num_rows;
+                            $cnt1 = $conn->real_escape_string($_GET['cat']);
+                            $cnt = $conn->query("SELECT * FROM Products WHERE category LIKE '%".$cnt1."%'")->num_rows;
                         }
                         else {
-                            $cnt = $conn->query("SELECT * FROM Products WHERE name LIKE '%".$_GET['search']."%'")->num_rows;
+                            $cnt1 = $conn->real_escape_string($_GET['search']);
+                            $cnt = $conn->query("SELECT * FROM Products WHERE name LIKE '%".$cnt1."%'")->num_rows;
                         }
                         if (intval($cnt/12)<($cnt/12)) {
                             $cnt=intval($cnt/12)+1;
