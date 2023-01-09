@@ -14,7 +14,7 @@ if (isset($_GET['up'])) {
 else {
     $up=0;
 }
-if ($_SESSION['login']) {
+if (isset($_SESSION['login'])) {
     $result=$conn->query("SELECT * FROM Cart WHERE u_id='".$_SESSION['u_id']."' AND p_id='".$id."'");
     if (mysqli_num_rows($result)>0) {
         while($row = $result->fetch_assoc()) {
@@ -50,4 +50,5 @@ elseif (isset($_SESSION['t_id'])) {
         echo "Success";
     }
 } 
+$conn->close();
 ?>

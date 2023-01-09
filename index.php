@@ -323,11 +323,17 @@ else {
                         if (isset($_GET['search'])) {
                             $st='search='.$_GET['search'].'&';
                         }
+                        elseif (isset($_GET['cat'])) {
+                            $st='cat='.$_GET['cat'].'&';
+                        }
                         else {
                             $st='';
                         }
                         if ($st=='') {
                             $cnt = $conn->query("SELECT * FROM Products")->num_rows;
+                        }
+                        elseif (isset($_GET['cat'])) {
+                            $cnt = $conn->query("SELECT * FROM Products WHERE category LIKE '%".$_GET['cat']."%'")->num_rows;
                         }
                         else {
                             $cnt = $conn->query("SELECT * FROM Products WHERE name LIKE '%".$_GET['search']."%'")->num_rows;
@@ -545,6 +551,13 @@ else {
         </div>
 
     </footer>
+    <?php
+    if (isset($_GET['message'])) {
+        if ($_GET['message']=='success') {
+            echo '<script>alert("Your order has been placed successfully. We will contact you soon.");</script>';
+        }
+    }
+    ?>
     <!--/Footer-->
 
         <script>

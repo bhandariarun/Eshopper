@@ -302,7 +302,139 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
                     <input type="text" placeholder="Full Name *" name="fname" <?php if (isset($_SESSION['login'])) { echo "value='".$_SESSION['first_name']." ".$_SESSION['last_name']."'"; } ?> required>
                     <input type="text" placeholder="Full Address *" name="add" <?php if (isset($_SESSION['login'])) { echo "value='".$_SESSION['address']."'"; } ?> required>
                     <input type="tel" placeholder="Contact No" name="cno" <?php if (isset($_SESSION['login'])) { echo "value='".$_SESSION['phone']."'"; } ?> required>
-                    <input class="btn btn-primary" type="submit" value="Checkout" style="font-size:20px">
+                    <center><h3>Payment Options:</h3></center>
+                    <!-- esewa form -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#esewaModal">
+                    Esewa Payment
+                    </button>
+                    <div class="modal" id="esewaModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Esewa Payment</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="/images/esewa.jpg" alt="" style="width:100%;">
+                            <h3 class="totalprice"></h3>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" name="esewa" class="btn btn-primary">Payment Completed</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <script>$('#esewaModal').on('shown.bs.modal', function () {
+                    $('#myInput').trigger('focus')
+                    })
+                    </script>
+                    
+                    <!-- /esewa form -->
+
+
+                    <!-- khalti form -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#khaltiModal">
+                    Khalti Payment
+                    </button>
+                    <div class="modal" id="khaltiModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Khalti Payment</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="/images/khalti.jpg" alt="" style="width:100%;">
+                            <h3 class="totalprice"></h3>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" name="khalti" class="btn btn-primary">Payment Completed</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <script>$('#khaltiModal').on('shown.bs.modal', function () {
+                    $('#myInput').trigger('focus')
+                    })
+                    </script>
+                    <!-- /khalti form -->
+
+                    <!-- imepay form -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imepayModal">
+                    ImePay Payment
+                    </button>
+                    <div class="modal" id="imepayModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">ImePay Payment</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="/images/imepay.jpg" alt="" style="width:100%;">
+                            <h3 class="totalprice"></h3>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" name="imepay" class="btn btn-primary">Payment Completed</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <script>$('#imepayModal').on('shown.bs.modal', function () {
+                    $('#myInput').trigger('focus')
+                    })
+                    </script>
+                    <!-- /imepay form -->
+
+                    <!-- fonepay form -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fonepayModal">
+                    FonePay Payment
+                    </button>
+                    <div class="modal" id="fonepayModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Fonepay Payment</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Currently Not Available</p>
+                            <h3 class="totalprice"></h3>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- <button type="submit" name="fonepay" class="btn btn-primary">Payment Completed</button> -->
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <script>$('#fonepayModal').on('shown.bs.modal', function () {
+                    $('#myInput').trigger('focus')
+                    })
+                    </script>
+                    <!-- /fonepay form -->
+
+                    <!-- Cash On delivery Form -->
+                    <button type="submit" name="cash" class="btn btn-primary" data-toggle="modal" data-target="#esewaModal">
+                    Cash On Delivery
+                    </button>
+                    
+                    <!-- /Cash On delivery Form -->
 
                 </form>
             </div>
@@ -401,6 +533,12 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
             else {
                 document.getElementById("totamt").innerHTML=ttotal;
                 document.getElementById("gtotal").innerHTML=ttotal+150;
+                
+                divs = document.getElementsByClassName( 'totalprice' );
+
+                [].slice.call( divs ).forEach(function ( div ) {
+                    div.innerHTML = "Your Total Amount is:"+(ttotal+150);
+                });
             }
         }
 
