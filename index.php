@@ -142,7 +142,7 @@ else {
                                         <li><a href="/?cat=Sensor">Sensors and Modules</a></li>
                                         <li><a href="/?cat=Motors and Accessories">Motors and Accessories</a></li>
                                         <li><a href="/?cat=Transistors and Mosfets"> Transistors and Mosfets</a></li>
-                                        <li><a href="/?cat=Integrated Circuits">Integrated Circuits</a></li>
+                                        <li><a href="/?cat=Integrated Circuit">Integrated Circuits</a></li>
                                         <li><a href="/?cat=Radio Frequency Modules">Radio Frequency Modules</a></li>
                                         <li><a href="/?cat=Batteries and Accessories">Batteries and Accessories</a></li>
                                         <li><a href="/?cat=Resistors,Diodes and Capacitors">Resistors,Diodes and Capacitors</a></li>
@@ -198,7 +198,7 @@ else {
                             }
                         }
                         elseif ((!isset($_GET['search'])) || ($_GET['search']=='')) {
-                            echo '<h2 class="title text-center">Features Items</h2>';
+                            echo '<h2 class="title text-center">Featured Items</h2>';
                             $result=$conn->query("SELECT * FROM Products LIMIT ".$page.",12");
                             while($row = $result->fetch_assoc()) {
                                 echo "<div class='col-xs-6 col-sm-3 col-md-3'>";
@@ -404,88 +404,60 @@ else {
 
                         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
+                            <?php 
+                            $count=1;
+                            $result=$conn->query("SELECT * FROM Recommended_Items");
+                            while($row = $result->fetch_assoc()) {
+                                $result2=$conn->query("SELECT * FROM Products WHERE id=".$row['p_id']);
+                                while($row2=$result2->fetch_assoc()) {
+                                    if ($count<4) {
+                            ?>
                                 <div class="item active">
+                                    
                                     <div class="col-sm-4">
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
-                                                    <img src="images/home/recommend1.jpg" alt="" />
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="images/home/recommend2.jpg" alt="" />
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="images/home/recommend3.jpg" alt="" />
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                    <?php 
+                                                    echo "<a href='/product-details.php?id=".$row2["id"]."'><img src='images/".$row2["id"].".jpg' style='height:180px;width:auto;' alt='' /></a>"; 
+                                                    echo "<a href='/product-details.php?id=".$row2["id"]."'><h2>".$row2["price"]."</h2></a>";
+                                                    echo "<a href='/product-details.php?id=".$row2["id"]."'><p>".$row2["name"]."</p></a>";
+                                                    ?>
+                                                    <?php echo "<button href='#' class='btn btn-default add-to-cart' id='".$row2["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>"; ?>
                                                 </div>
 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            <?php 
+                                    }
+                                    else {
+                            ?>
                                 <div class="item">
+                                    
                                     <div class="col-sm-4">
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
-                                                    <img src="images/home/recommend1.jpg" alt="" />
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="images/home/recommend2.jpg" alt="" />
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="images/home/recommend3.jpg" alt="" />
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                    <?php 
+                                                    echo "<a href='/product-details.php?id=".$row2["id"]."'><img src='images/".$row2["id"].".jpg' style='height:180px;width:auto;' alt='' /></a>"; 
+                                                    echo "<a href='/product-details.php?id=".$row2["id"]."'><h2>".$row2["price"]."</h2></a>";
+                                                    echo "<a href='/product-details.php?id=".$row2["id"]."'><p>".$row2["name"]."</p></a>";
+                                                    ?>
+                                                    <?php echo "<button href='#' class='btn btn-default add-to-cart' id='".$row2["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>"; ?>
                                                 </div>
 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            <?php 
+                                    }
+                                }
+                                $count=$count+1;
+                            }
+                            ?>
                             </div>
                             <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
                                 <i class="fa fa-angle-left"></i>
