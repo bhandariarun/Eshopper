@@ -175,26 +175,26 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
 							while($row = $result->fetch_assoc()) {
 								$result2=$conn->query("SELECT * FROM Products WHERE id=".$row['p_id']."");
 								while($row2=$result2->fetch_assoc()) {
-									echo '<tr id="'.$row['p_id'].'a'.'">';
+									echo '<tr id="'.htmlspecialchars($row['p_id']).'a'.'">';
 									echo '<td class="">';
-									echo '<a href=""><img src="images/'.$row2['id'].'.jpg" style="height:100px; width:100px" alt=""></a>';
+									echo '<a href=""><img src="images/'.htmlspecialchars($row2['id']).'.jpg" style="height:100px; width:100px" alt=""></a>';
 									echo '</td>';
 									echo '<td class="">';
-									echo '<h4 style="margin:0 0 10px"><a href="" style="color:#FE980F">'.$row2['name'].'</a></h4>';
+									echo '<h4 style="margin:0 0 10px"><a href="" style="color:#FE980F">'.htmlspecialchars($row2['name']).'</a></h4>';
 									echo '</td>';
 									echo '<td class="cart_price">';
-									echo '<p id="'.$row['p_id'].'pp">'.$row2['price'].'</p>';
+									echo '<p id="'.$row['p_id'].'pp">'.htmlspecialchars($row2['price']).'</p>';
 									echo '</td>';
 									echo '<td class="cart_quantity">';
 									echo '<div class="cart_quantity_button">';
                                     $c="'".$row['p_id']."'";
 									echo '<a class="cart_quantity_up" onclick="dec('.$c.')"> - </a>';
-									echo '<input id="'.$row['p_id'].'" class="cart_quantity_input" type="tel"'?>oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" <?php echo 'name="quantity" value="'.$row['qty'].'" autocomplete="off" size="2" onchange="addto('.$c.')">';
+									echo '<input id="'.htmlspecialchars($row['p_id']).'" class="cart_quantity_input" type="tel"'?>oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" <?php echo 'name="quantity" value="'.htmlspecialchars($row['qty']).'" autocomplete="off" size="2" onchange="addto('.$c.')">';
 									echo '<a class="cart_quantity_down" onclick="inc('.$c.')"> + </a>';
 									echo '</div>';
 									echo '</td>';
 									echo '<td class="cart_total">';
-									echo '<p id="'.$row['p_id'].'tt" class="cart_total_price">'.($row2['price']*$row['qty']).'</p>';
+									echo '<p id="'.htmlspecialchars($row['p_id']).'tt" class="cart_total_price">'.htmlspecialchars(($row2['price']*$row['qty'])).'</p>';
 									echo '</td>';
 									echo '<td class="cart_delete">';
 									echo '<a class="cart_quantity_delete" onclick="del1('.$c.')"><i class="fa fa-times"></i></a>';
@@ -234,26 +234,26 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
 							while($row = $result->fetch_assoc()) {
 								$result2=$conn->query("SELECT * FROM Products WHERE id=".$row['p_id']."");
 								while($row2=$result2->fetch_assoc()) {
-									echo '<tr id="'.$row['p_id'].'a'.'">';
+									echo '<tr id="'.htmlspecialchars($row['p_id']).'a'.'">';
 									echo '<td class="">';
-									echo '<a href=""><img src="images/'.$row2['id'].'.jpg" style="height:100px; width:100px" alt=""></a>';
+									echo '<a href=""><img src="images/'.htmlspecialchars($row2['id']).'.jpg" style="height:100px; width:100px" alt=""></a>';
 									echo '</td>';
 									echo '<td class="">';
-									echo '<h4 style="margin:0 0 10px"><a href="" style="color:#FE980F">'.$row2['name'].'</a></h4>';
+									echo '<h4 style="margin:0 0 10px"><a href="" style="color:#FE980F">'.htmlspecialchars($row2['name']).'</a></h4>';
 									echo '</td>';
 									echo '<td class="cart_price">';
-									echo '<p id="'.$row['p_id'].'pp">'.$row2['price'].'</p>';
+									echo '<p id="'.htmlspecialchars($row['p_id']).'pp">'.htmlspecialchars($row2['price']).'</p>';
 									echo '</td>';
 									echo '<td class="cart_quantity">';
 									echo '<div class="cart_quantity_button">';
-                                    $c="'".$row['p_id']."'";
+                                    $c="'".htmlspecialchars($row['p_id'])."'";
 									echo '<a class="cart_quantity_up" onclick="dec('.$c.')"> - </a>';
-									echo '<input id="'.$row['p_id'].'" class="cart_quantity_input" type="tel"'?>oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" <?php echo 'name="quantity" value="'.$row['qty'].'" autocomplete="off" size="2" onchange="addto('.$c.')">';
+									echo '<input id="'.htmlspecialchars($row['p_id']).'" class="cart_quantity_input" type="tel"'?>oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" <?php echo 'name="quantity" value="'.htmlspecialchars($row['qty']).'" autocomplete="off" size="2" onchange="addto('.$c.')">';
 									echo '<a class="cart_quantity_down" onclick="inc('.$c.')"> + </a>';
 									echo '</div>';
 									echo '</td>';
 									echo '<td class="cart_total">';
-									echo '<p id="'.$row['p_id'].'tt" class="cart_total_price">'.($row2['price']*$row['qty']).'</p>';
+									echo '<p id="'.htmlspecialchars($row['p_id']).'tt" class="cart_total_price">'.htmlspecialchars(($row2['price']*$row['qty'])).'</p>';
 									echo '</td>';
 									echo '<td class="cart_delete">';
 									echo '<a class="cart_quantity_delete" onclick="del1('.$c.')"><i class="fa fa-times"></i></a>';

@@ -179,7 +179,7 @@ else {
                         
                         <?php
                         if (isset($_GET['cat'])) {
-                            echo '<h2 class="title text-center">'.$_GET['cat'].'</h2>';
+                            echo '<h2 class="title text-center">'.htmlspecialchars($_GET['cat']).'</h2>';
                             $cat1 = $conn->real_escape_string($_GET['cat']);
                             $result=$conn->query("SELECT * FROM Products WHERE category LIKE '%".$cat1."%' LIMIT ".$page.",12");
                             while($row = $result->fetch_assoc()) {
@@ -216,7 +216,7 @@ else {
                             }
                         }
                         else {
-                            echo '<h2 class="title text-center">'.$_GET['search'].'</h2>';
+                            echo '<h2 class="title text-center">'.htmlspecialchars($_GET['search']).'</h2>';
                             $search1 = $conn->real_escape_string($_GET['search']);
                             $result=$conn->query("SELECT * FROM Products WHERE name LIKE '%".$search1."%' LIMIT ".$page.",12");
                             while($row = $result->fetch_assoc()) {

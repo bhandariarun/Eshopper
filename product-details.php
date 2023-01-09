@@ -192,13 +192,13 @@ if (mysqli_num_rows($resultf)>0) {
 							$result=$conn->query("SELECT * FROM Products WHERE id=".$id."");
 							if (mysqli_num_rows($result)>0) {
 								while($row = $result->fetch_assoc()) {
-									echo '<h1>'.$row['name'].'</h1>';
+									echo '<h1>'.htmlspecialchars($row['name']).'</h1>';
 									echo '<span>';
-									echo '<span>Rs.'.$row['price'].'</span>';
+									echo '<span>Rs.'.htmlspecialchars($row['price']).'</span>';
 									if ($row['stock']=='Instock') {
 										echo '<label>Quantity:</label>';
 										echo '<input type="text" value="1" id="qty"/>';
-										echo '<button type="button" class="btn btn-fefault cart" id="'.$row['id'].'" onclick="addto()">';
+										echo '<button type="button" class="btn btn-fefault cart" id="'.htmlspecialchars($row['id']).'" onclick="addto()">';
 										echo '<i class="fa fa-shopping-cart"></i>';
 										echo 'Add to cart';
 										echo '</button>';
