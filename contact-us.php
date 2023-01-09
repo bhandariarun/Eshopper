@@ -110,10 +110,13 @@
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
-						</div>
-					</div>
+                        <div class="search_box pull-right">
+                            <form action="/" method="get">
+                                <input name="search" type="text" placeholder="Search" />
+                                <button type="submit" class="btn" style="background: #FE980F;border: 0 none;border-radius: 0;background-image: url(../images/home/searchicon.png);background-repeat: no-repeat;background-position: center;height: 35px;width:35px;"></button>
+                            </form>
+                        </div>
+                    </div>
 				</div>
 			</div>
 		</div><!--/header-bottom-->
