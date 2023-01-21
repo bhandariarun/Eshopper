@@ -70,8 +70,8 @@ else {
                     <div class="col-sm-6">
                         <div class="social-icons pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="https://www.facebook.com/profile.php?id=100089367101003"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://www.youtube.com/channel/UCXodfJHWKa-5lBCvaKWkVUQ"><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -151,7 +151,6 @@ else {
                                         <li><a href="/?cat=Display Modules">Display Modules</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="readymadeprojects.php">Ready Made Projects</a></li>
                                 <li><a href="contact-us.php">Contact</a></li>
                             </ul>
                         </div>
@@ -188,7 +187,7 @@ else {
                                 echo "<div class='product-image-wrapper'>";
                                 echo "<div class='single-products'>";
                                 echo "<div class='productinfo text-center'>";
-                                echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg?skncxajs' alt='' /></a>";
+                                echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg' alt='' /></a>";
                                 echo "<a href='/product-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
                                 echo "<a href='/product-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
                                 echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
@@ -206,7 +205,7 @@ else {
                                 echo "<div class='product-image-wrapper'>";
                                 echo "<div class='single-products'>";
                                 echo "<div class='productinfo text-center'>";
-                                echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg?jncakjdnc' alt='' /></a>";
+                                echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg' alt='' /></a>";
                                 echo "<a href='/product-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
                                 echo "<a href='/product-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
                                 echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
@@ -225,7 +224,7 @@ else {
                                 echo "<div class='product-image-wrapper'>";
                                 echo "<div class='single-products'>";
                                 echo "<div class='productinfo text-center'>";
-                                echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg?slakjnckajn' alt='' /></a>";
+                                echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg' alt='' /></a>";
                                 echo "<a href='/product-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
                                 echo "<a href='/product-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
                                 echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";

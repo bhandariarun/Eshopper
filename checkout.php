@@ -35,7 +35,7 @@
 		$result=$conn->query("SELECT * FROM Cart WHERE u_id='".$_SESSION['u_id']."'");
 		if (mysqli_num_rows($result)>0) {
 			while($row = $result->fetch_assoc()) {
-				$p_ids=$p_ids.$row['p_id'].',';
+				$p_ids=$p_ids.$row['p_id'].'-'.$row['qty'].',';
 				$result2=$conn->query("SELECT * FROM Products WHERE id=".$row['p_id']."");
 				while($row2=$result2->fetch_assoc()) {
 					$tot=$tot+($row['qty']*$row2['price']);
@@ -51,7 +51,7 @@
 		$result=$conn->query("SELECT * FROM Tcart WHERE t_id='".$_SESSION['t_id']."'");
 		if (mysqli_num_rows($result)>0) {
 			while($row = $result->fetch_assoc()) {
-				$p_ids=$p_ids.$row['p_id'].',';
+				$p_ids=$p_ids.$row['p_id'].'-'.$row['qty'].',';
 				$result2=$conn->query("SELECT * FROM Products WHERE id=".$row['p_id']."");
 				while($row2=$result2->fetch_assoc()) {
 					$tot=$tot+($row['qty']*$row2['price']);

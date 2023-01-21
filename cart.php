@@ -47,7 +47,7 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
                     <div class="col-sm-6">
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-phone"></i> +9779865609055 / 9816641646</a></li>
+                                <li><a href=""><i class="fa fa-phone"></i> +9779865609055 / 9816641646</a></li>
                                 <li><a href="#"><i class="fa fa-envelope"></i> techadda2023@gmail.com</a></li>
                             </ul>
                         </div>
@@ -55,7 +55,7 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
                     <div class="col-sm-6">
                         <div class="social-icons pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.facebook.com/profile.php?id=100089367101003"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
@@ -433,12 +433,12 @@ if (!(isset($_SESSION['t_id']) or isset($_SESSION['login']))) {
                     <!-- /fonepay form -->
 
                     <!-- Cash On delivery Form -->
-                    <button type="submit" name="cash" class="btn btn-primary" data-toggle="modal" data-target="#esewaModal">
+                    <button type="submit" name="cash" class="btn btn-primary">
                     Cash On Delivery
                     </button>
                     
                     <!-- /Cash On delivery Form -->
-
+                    <h3>Note: Cash On delivery Currently available for Pokhara valley customers only.</h3>
                 </form>
             </div>
             
