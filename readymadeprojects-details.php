@@ -129,6 +129,7 @@ if (mysqli_num_rows($resultf)>0) {
                                         <li><a href="/?cat=Display Modules">Display Modules</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="readymadeprojects.php">Ready Made Projects</a></li>
 								<li><a href="contact-us.php">Contact</a></li>
 							</ul>
 						</div>

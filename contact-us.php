@@ -105,6 +105,7 @@
                                         <li><a href="/?cat=Display Modules">Display Modules</a></li>
                                     </ul>
                                 </li>
+								<li><a href="readymadeprojects.php">Ready Made Projects</a></li>
 								<li><a href="contact-us.php" class="active">Contact</a></li>
 							</ul>
 						</div>

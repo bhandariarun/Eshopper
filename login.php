@@ -152,6 +152,7 @@ elseif (isset($_POST["hid1"])) {
                                         <li><a href="/?cat=Display Modules">Display Modules</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="readymadeprojects.php">Ready Made Projects</a></li>
                                 <li><a href="contact-us.php">Contact</a></li>
                             </ul>
                         </div>
