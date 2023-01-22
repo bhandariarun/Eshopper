@@ -70,8 +70,8 @@ else {
                     <div class="col-sm-6">
                         <div class="social-icons pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.facebook.com/profile.php?id=100089367101003"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCXodfJHWKa-5lBCvaKWkVUQ"><i class="fa fa-youtube"></i></a></li>
                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -151,6 +151,7 @@ else {
                                         <li><a href="/?cat=Display Modules">Display Modules</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="readymadeprojects.php">Ready Made Projects</a></li>
                                 <li><a href="contact-us.php">Contact</a></li>
                             </ul>
                         </div>
@@ -181,16 +182,16 @@ else {
                         if (isset($_GET['cat'])) {
                             echo '<h2 class="title text-center">'.htmlspecialchars($_GET['cat']).'</h2>';
                             $cat1 = $conn->real_escape_string($_GET['cat']);
-                            $result=$conn->query("SELECT * FROM Products WHERE category LIKE '%".$cat1."%' LIMIT ".$page.",12");
+                            $result=$conn->query("SELECT * FROM Ready_Made_Projects WHERE category LIKE '%".$cat1."%' LIMIT ".$page.",12");
                             while($row = $result->fetch_assoc()) {
                                 echo "<div class='col-xs-6 col-sm-3 col-md-3'>";
                                 echo "<div class='product-image-wrapper'>";
                                 echo "<div class='single-products'>";
                                 echo "<div class='productinfo text-center'>";
-                                echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg' alt='' /></a>";
-                                echo "<a href='/product-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
-                                echo "<a href='/product-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
-                                echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
+                                echo "<a href='/readymadeprojects-details.php?id=".$row["id"]."'><img src='images/readymade/".$row["id"].".jpg?skncxajs' alt='' /></a>";
+                                echo "<a href='/readymadeprojects-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
+                                echo "<a href='/readymadeprojects-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
+                                //echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
@@ -198,17 +199,17 @@ else {
                             }
                         }
                         elseif ((!isset($_GET['search'])) || ($_GET['search']=='')) {
-                            echo '<h2 class="title text-center">Featured Items</h2>';
-                            $result=$conn->query("SELECT * FROM Products LIMIT ".$page.",12");
+                            echo '<h2 class="title text-center">Ready Made Projects</h2>';
+                            $result=$conn->query("SELECT * FROM Ready_Made_Projects LIMIT ".$page.",12");
                             while($row = $result->fetch_assoc()) {
                                 echo "<div class='col-xs-6 col-sm-3 col-md-3'>";
                                 echo "<div class='product-image-wrapper'>";
                                 echo "<div class='single-products'>";
                                 echo "<div class='productinfo text-center'>";
-                                echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg' alt='' /></a>";
-                                echo "<a href='/product-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
-                                echo "<a href='/product-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
-                                echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
+                                echo "<a href='/readymadeprojects-details.php?id=".$row["id"]."'><img src='images/readymade/".$row["id"].".jpg?jncakjdnc' alt='' /></a>";
+                                echo "<a href='/readymadeprojects-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
+                                echo "<a href='/readymadeprojects-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
+                                //echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
@@ -218,16 +219,16 @@ else {
                         else {
                             echo '<h2 class="title text-center">'.htmlspecialchars($_GET['search']).'</h2>';
                             $search1 = $conn->real_escape_string($_GET['search']);
-                            $result=$conn->query("SELECT * FROM Products WHERE name LIKE '%".$search1."%' LIMIT ".$page.",12");
+                            $result=$conn->query("SELECT * FROM Ready_Made_Projects WHERE name LIKE '%".$search1."%' LIMIT ".$page.",12");
                             while($row = $result->fetch_assoc()) {
                                 echo "<div class='col-xs-6 col-sm-3 col-md-3'>";
                                 echo "<div class='product-image-wrapper'>";
                                 echo "<div class='single-products'>";
                                 echo "<div class='productinfo text-center'>";
-                                echo "<a href='/product-details.php?id=".$row["id"]."'><img src='images/".$row["id"].".jpg' alt='' /></a>";
-                                echo "<a href='/product-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
-                                echo "<a href='/product-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
-                                echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
+                                echo "<a href='/readymadeprojects-details.php?id=".$row["id"]."'><img src='images/readymade/".$row["id"].".jpg?slakjnckajn' alt='' /></a>";
+                                echo "<a href='/readymadeprojects-details.php?id=".$row["id"]."'><h2>".$row["price"]."</h2></a>";
+                                echo "<a href='/readymadeprojects-details.php?id=".$row["id"]."'><p>".$row["name"]."</p></a>";
+                                //echo "<button href='#' class='btn btn-default add-to-cart' id='".$row["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>";
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
@@ -335,15 +336,15 @@ else {
                             $st='';
                         }
                         if ($st=='') {
-                            $cnt = $conn->query("SELECT * FROM Products")->num_rows;
+                            $cnt = $conn->query("SELECT * FROM Ready_Made_Projects")->num_rows;
                         }
                         elseif (isset($_GET['cat'])) {
                             $cnt1 = $conn->real_escape_string($_GET['cat']);
-                            $cnt = $conn->query("SELECT * FROM Products WHERE category LIKE '%".$cnt1."%'")->num_rows;
+                            $cnt = $conn->query("SELECT * FROM Ready_Made_Projects WHERE category LIKE '%".$cnt1."%'")->num_rows;
                         }
                         else {
                             $cnt1 = $conn->real_escape_string($_GET['search']);
-                            $cnt = $conn->query("SELECT * FROM Products WHERE name LIKE '%".$cnt1."%'")->num_rows;
+                            $cnt = $conn->query("SELECT * FROM Ready_Made_Projects WHERE name LIKE '%".$cnt1."%'")->num_rows;
                         }
                         if (intval($cnt/12)<($cnt/12)) {
                             $cnt=intval($cnt/12)+1;
@@ -419,9 +420,9 @@ else {
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
                                                     <?php 
-                                                    echo "<a href='/product-details.php?id=".$row2["id"]."'><img src='images/".$row2["id"].".jpg' style='height:180px;width:auto;' alt='' /></a>"; 
-                                                    echo "<a href='/product-details.php?id=".$row2["id"]."'><h2>".$row2["price"]."</h2></a>";
-                                                    echo "<a href='/product-details.php?id=".$row2["id"]."'><p>".$row2["name"]."</p></a>";
+                                                    echo "<a href='/readymadeprojects-details.php?id=".$row2["id"]."'><img src='images/".$row2["id"].".jpg' style='height:180px;width:auto;' alt='' /></a>"; 
+                                                    echo "<a href='/readymadeprojects-details.php?id=".$row2["id"]."'><h2>".$row2["price"]."</h2></a>";
+                                                    echo "<a href='/readymadeprojects-details.php?id=".$row2["id"]."'><p>".$row2["name"]."</p></a>";
                                                     ?>
                                                     <?php echo "<button href='#' class='btn btn-default add-to-cart' id='".$row2["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>"; ?>
                                                 </div>
@@ -441,9 +442,9 @@ else {
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
                                                     <?php 
-                                                    echo "<a href='/product-details.php?id=".$row2["id"]."'><img src='images/".$row2["id"].".jpg' style='height:180px;width:auto;' alt='' /></a>"; 
-                                                    echo "<a href='/product-details.php?id=".$row2["id"]."'><h2>".$row2["price"]."</h2></a>";
-                                                    echo "<a href='/product-details.php?id=".$row2["id"]."'><p>".$row2["name"]."</p></a>";
+                                                    echo "<a href='/readymadeprojects-details.php?id=".$row2["id"]."'><img src='images/".$row2["id"].".jpg' style='height:180px;width:auto;' alt='' /></a>"; 
+                                                    echo "<a href='/readymadeprojects-details.php?id=".$row2["id"]."'><h2>".$row2["price"]."</h2></a>";
+                                                    echo "<a href='/readymadeprojects-details.php?id=".$row2["id"]."'><p>".$row2["name"]."</p></a>";
                                                     ?>
                                                     <?php echo "<button href='#' class='btn btn-default add-to-cart' id='".$row2["id"]."' onclick='addto()'><i class='fa fa-shopping-cart'></i>Add to cart</button>"; ?>
                                                 </div>
